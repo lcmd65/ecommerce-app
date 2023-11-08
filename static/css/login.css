@@ -1,0 +1,24 @@
+.container {
+    width: 30%;
+    margin-left: 20%;
+    margin-top: 200px;
+    height: 30%;
+}
+
+.entry-form {
+    height: 10px;
+    background-color: #eaeaea;
+    position: absolute;
+    margin-left: 5%;
+    margin-top: 5px;
+    font-size: 10px;
+}
+
+.label-privacy {
+    position: fixed;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    width: 100%;
+    background-color: #eaeaea;
+    font-size: 10px;
+}
