@@ -1,2 +1,4 @@
 flask
 cv2
+flask_catching
+flask_sqlalchemy
