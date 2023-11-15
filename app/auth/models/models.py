@@ -1,13 +1,26 @@
 from flask import db
-import app.auth.controllers.controllers
+from app.auth.controllers.controllers import user_parsing
 
 
 class User(db.Model):
     def __init__(self):
-        self.username = db.Model("usesname")
-        self.password = db.Model("password")
+        self.username = None
+        self.password = None
         self.gender = None
         self.image = None
-        self.visited = []
+        self.chat_messate = []
         
-        app.auth.controllers.controllers.user_parsing(self, self.username, self.password)
+        def user_parsing(self, username, password):
+            user_information = user_parsing(username, password)
+        
+        def to_dict(self):
+            return {
+                "username": self.username,
+                "password": self.password,
+                "gender":self.gender,
+                "image": self.image,
+                "chat_message": self.chat_messa.get
+                }
+        
+        def image_parsing(self)
+            

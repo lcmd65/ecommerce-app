@@ -49,8 +49,8 @@ def create_app(test_config=None):
     @app.route('/')
     def main():
         return render_template("base.html")
-    @app.route('/nike')
-    def nohcel():
+    @app.route('/ecommerce')
+    def susbot():
         return render_template("base.html")
     
     return app
