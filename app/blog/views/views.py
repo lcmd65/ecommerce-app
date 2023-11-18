@@ -6,4 +6,7 @@ blog_blueprint = blueprints("blog_blueprint")
 
 @blog_blueprint.route("/home")
 def home():
+    user = cache.get("user")
+    
+    return render_template("home.html")
     pass

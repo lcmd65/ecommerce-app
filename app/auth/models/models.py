@@ -22,5 +22,8 @@ class User(db.Model):
                 "chat_message": self.chat_messa.get
                 }
         
-        def image_parsing(self)
+        def image_parsing(self):
+            import bson
+            image = bson.decode(self.image)
+            self.image = image
             
