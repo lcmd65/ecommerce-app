@@ -7,8 +7,6 @@ from flask import Flask, Blueprint, render_template, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask import g, session
 from flask_caching import Cache
-import 
-
 
 class AppVariable():
     def __init__(self):
@@ -27,10 +25,10 @@ def create_app(test_config=None):
         CACHE_THRESHOLD = 100000,
     )
     app.config.from_pyfile("config.py")
-    from .auth.views import api_auth
-    from .blog.views import api_blog
-    app.register_blueprint(api_auth)
-    app.register_blueprint(api_blog)
+    from .auth.views.views import auth_blueprint
+    from .blog.views.views import blog_blueprint
+    app.register_blueprint(auth_blueprint)
+    app.register_blueprint(blog_blueprint)
     cache.cache.init_app(app)
     if test_config is None:
         # load the instance config, if it exists, when not testing
@@ -52,7 +50,6 @@ def create_app(test_config=None):
     @app.route('/ecommerce')
     def susbot():
         return render_template("base.html")
-    
     return app
 
 
