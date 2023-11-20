@@ -1,8 +1,8 @@
-from flask import db
+from flask import Flask
 from app.auth.controllers.controllers import user_parsing
 
 
-class User(db.Model):
+class User():
     def __init__(self):
         self.username = None
         self.password = None

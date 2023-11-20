@@ -1,4 +1,3 @@
-from flask_caching import cache
-
-cache = cache()
+from flask_caching import Cache
+cache = Cache()
 
