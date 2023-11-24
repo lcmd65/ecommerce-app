@@ -10,39 +10,43 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" type="text/css" href = "{{ url_for('static',filename='css/base.css') }}"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
     </head>
     <body>
-        <nav class="navbar-user-indofmation">
-            <ul class="navbar-user-information">
+        <nav class="navbar-user-information">
+            <ul class="navbar-user-information-list">
                 <li>
-                <a href="#home" class="active active-first">Home</a>
+                <a href="#home">Login</a>
                 </li>
                 <li>
-                <a href="#about">Men</a>
+                <a href="#about">Sign Up</a>
                 </li>
                 <li>
-                <a href="/login">Women</a>
-                </li>
-            </ul>
-            </div>
-        </nav>
-
-        <nav class="navbar navbar-expand-lg main-nav px-0">
-            <div class="collapse navbar-collapse" id="mainMenu">
-            <ul class="navbar-nav ml-auto text-uppercase f1">
-                <li>
-                <a href="#home" class="active active-first">Home</a>
-                </li>
-                <li>
-                <a href="#about">Men</a>
-                </li>
-                <li>
-                <a href="/login">Women</a>
+                <a href="/login">Help</a>
                 </li>
             </ul>
             </div>
         </nav>
+        <header class="main-header">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg main-nav px-0">
+                    <div class="collapse navbar-collapse" id="mainMenu">
+                    <ul class="navbar-nav ml-auto text-uppercase f1">
+                        <li>
+                        <a href="#home" class="active active-first">Home</a>
+                        </li>
+                        <li>
+                        <a href="#about">Men</a>
+                        </li>
+                        <li>
+                        <a href="/login">Women</a>
+                        </li>
+                    </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
         <div class = "card-header">
             <div class = "container">
                 <div class = "container-header">

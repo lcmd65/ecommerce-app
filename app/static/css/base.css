@@ -1,14 +1,6 @@
-/**
- * index.scss
- * - Add any styles you want here!
- */
-
 body {
     background: #ffffff !important;
 }
-
-
-/* main-header start */
 
 [data-target="#mainMenu"] {
     position: relative;
@@ -194,6 +186,18 @@ body {
     text-align: left;
 }
 
+.navbar-user-information {
+    background-color: #ffffff;
+    justify-content: flex-end;
+    height: 10px;
+    position: absolute;
+}
+
+.navbar-user-information-list {
+    justify-content: flex-end;
+    display: flex;
+}
+
 .container-list-home-function {
     margin-top: 5%;
     border-radius: 8px;
@@ -263,4 +267,11 @@ button:hover {
     text-align: left;
     position: relative;
     font-size: small;
+}
+
+ul,
+ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }

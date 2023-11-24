@@ -93,7 +93,7 @@ def register():
     except Exception as e:
         return render_template("auth/register.html", error = e)
     
-@auth_blueprint.route("/base",  methods = ['GET','POST'])
+@auth_blueprint.route("/ecommerce",  methods = ['GET','POST'])
 def base():
     try:
         if request.method == "POST":
