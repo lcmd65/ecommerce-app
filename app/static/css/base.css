@@ -1,5 +1,6 @@
 body {
     background: #ffffff !important;
+    display: block;
 }
 
 [data-target="#mainMenu"] {
@@ -67,6 +68,8 @@ body {
     width: 100%;
     -webkit-transition: all 0.4s ease;
     transition: all 0.4s ease;
+    margin-top: 5%;
+    background-color: #f5f5f5;
 }
 
 .main-header.fixed-nav {
@@ -191,15 +194,27 @@ body {
     justify-content: flex-end;
     height: 10px;
     position: absolute;
+    font-size: 14px;
+    align-items: flex-end;
 }
 
 .navbar-user-information-list {
     justify-content: flex-end;
     display: flex;
+    margin-right: 0%;
+}
+
+.navbar-user-information-list li {
+    margin-left: 10px;
+    font-size: 12px;
+}
+
+.navbar-user-information-list ul {
+    margin-right: 10px;
+    align-self: flex-end;
 }
 
 .container-list-home-function {
-    margin-top: 5%;
     border-radius: 8px;
     align-self: center;
     align-items: center;
@@ -274,4 +289,44 @@ ol {
     list-style: none;
     padding: 0;
     margin: 0;
+}
+
+.body-space {
+    position: fixed;
+    margin-top: 7%;
+    display: flex;
+}
+
+.tree-workspace-container {
+    background-color: #f3f3f3;
+}
+
+.chat-box-container {
+    position: fixed;
+    bottom: 5%;
+    right: 0%;
+    border-radius: 8px;
+    padding: 200px 150px;
+    background-color: #fafafa;
+    border-width: 1px;
+    border-color: #120662;
+}
+
+.chat-container {
+    position: relative;
+    height: 80%
+}
+
+.message-box {
+    border-radius: 8px;
+    font-size: 12px;
+    position: absolute;
+    display: flex;
+}
+
+.chat-entry {
+    border-radius: 8px;
+    border-width: 1px;
+    position: absolute;
+    height: 10%;
 }
