@@ -317,6 +317,7 @@ ol {
     width: 300px;
     border-style: solid;
     display: flex;
+    transition: height 0.5s ease;
 }
 
 .chat-container {
