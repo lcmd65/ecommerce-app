@@ -3,7 +3,11 @@ import cache
 import json
 import pickle
 import ssl
-from flask import Flask, Blueprint, render_template, redirect
+from flask import (Flask, 
+                   Blueprint, 
+                   render_template, 
+                   redirect,request, 
+                   url_for)
 from flask_sqlalchemy import SQLAlchemy
 from flask import g, session
 from flask_caching import Cache
@@ -46,10 +50,8 @@ def create_app(test_config=None):
     # a base page
     @app.route('/')
     def main():
-        return render_template("base.html")
-    @app.route('/ecommerce')
-    def susbot():
-        return render_template("base.html")
+        return redirect(url_for('auth_blueprint.ecommerce'))
+    
     return app
 
 

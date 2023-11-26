@@ -391,3 +391,7 @@ ol {
     position: static;
     font-size: 10px;
 }
+
+.tree-workspace-container {
+    background-color: #fdf8f8;
+}

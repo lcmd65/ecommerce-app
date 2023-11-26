@@ -15,6 +15,7 @@ from pymongo import MongoClient
 from pymongo.server_api import ServerApi
 from flask_caching import Cache
 import json
+from bson import json_util
 
 auth_blueprint = Blueprint('auth_blueprint', __name__)
 
@@ -94,17 +95,19 @@ def register():
         return render_template("auth/register.html", error = e)
     
 @auth_blueprint.route("/ecommerce",  methods = ['GET','POST'])
-def base():
+def ecommerce():
     try:
         from app.auth.models.product import Product
+        product_database = Product()
+        product_data_json = json_util.dumps(product_database.to_dict())
         if request.method == "POST":
             button_name = request.form.get("button")
             if button_name == "login":
                 return redirect('/login')
             elif button_name == "register":
                 return redirect('/register')
-            product = Product()
-        return render_template("base.html")
+            return render_template("base.html",  product_data = product_data_json)
+        return render_template("base.html",  product_data = product_data_json)
     except:
         pass
         

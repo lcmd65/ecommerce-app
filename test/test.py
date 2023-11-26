@@ -31,3 +31,6 @@ class Product:
         for item in self.to_dict():
             print(item)
 
+if __name__ == "__main__":
+    product = Product()
+    product.display()

@@ -6,18 +6,18 @@ from flask import (
     redirect,
     jsonify,
     g)
-import app.cache
+from app.cache import cache
 import json
 import openai
 from app import db
-from app.auth.models.models import User
+from app.auth.models.user import User
 
 blog_blueprint = Blueprint('blog_blueprint', __name__)
             
 # home page
 @blog_blueprint.route("/home",methods = ['GET', 'POST'])
 def home():
-    model = json.loads(app.cache.cache.get('database')) # cache get
+    model = json.loads(cache.get('database')) # cache get
     user = User(None, None, None, None, None) # NULL data user
     user.initFromUser(model) # init User data from cache
     if request.method == "POST":
@@ -34,7 +34,7 @@ def home():
 @blog_blueprint.route("/chatbox", methods = ['GET', 'POST'])
 def homeChatbox():
     tree, button = None, None
-    model = json.loads(app.cache.cache.get('database'))
+    model = json.loads(cache.get('database'))
     user = User(None, None, None, None, None)
     user.initFromUser(model)
     data_base = db.DB()
