@@ -196,12 +196,16 @@ body {
     position: absolute;
     font-size: 14px;
     align-items: flex-end;
+    margin-top: 5%;
+    margin-left: 70%;
+    text-align: right;
 }
 
 .navbar-user-information-list {
     justify-content: flex-end;
     display: flex;
     margin-right: 0%;
+    text-align: right;
 }
 
 .navbar-user-information-list li {
@@ -306,10 +310,13 @@ ol {
     bottom: 5%;
     right: 0%;
     border-radius: 8px;
-    background-color: #fafafa;
+    background-color: #ffffff;
     border-width: 1px;
-    border-color: #120662;
-    padding: 200px 150px;
+    border-color: #c3c2cd;
+    height: 400px;
+    width: 300px;
+    border-style: solid;
+    display: flex;
 }
 
 .chat-container {
@@ -330,28 +337,56 @@ ol {
 .chat-entry {
     border-radius: 8px;
     border-width: 1px;
-    border: #000;
+    border: #e5e5e5;
+    border-style: solid;
     position: absolute;
-    height: 10%;
+    height: 8%;
+    width: 94%;
+    margin-left: 3%;
+    margin-right: 3%;
+    margin-top: 120%;
     background-color: #fdf8f8;
-    width: max-content;
-    z-index: 100;
+    font-size: 12px;
+    padding-left: 5px;
 }
 
 .chat-button-bar {
-    height: 10px;
+    height: 25px;
+    width: 100%;
     position: absolute;
-    margin-top: 0;
-    margin-bottom: 90%;
+    margin-top: 0px;
+    margin-right: 0px;
+    text-align: left;
+    background-color: #ececec;
+    border-radius: 8px;
+    display: flex;
+    justify-content: flex-end;
 }
 
-.chat-button {
-    border-radius: 5px;
-    margin-top: 0;
-    margin-right: 0;
-    width: 10px;
-    height: 10px;
-    background-color: #120662;
-    color: #ffffff;
-    position: absolute;
+.chat-button-openbutton {
+    border-radius: 8px;
+    margin-top: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding: 0px;
+    width: 16px;
+    height: 16px;
+    background-color: rgb(36, 124, 55);
+    color: rgb(13, 82, 17);
+    position: static;
+    font-size: 10px;
+}
+
+.chat-button-closebutton {
+    border-radius: 8px;
+    margin-top: 2px;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding: 0px;
+    width: 16px;
+    height: 16px;
+    background-color: rgb(186, 160, 44);
+    color: rgb(81, 95, 18);
+    position: static;
+    font-size: 10px;
 }

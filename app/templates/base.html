@@ -85,14 +85,17 @@
         </div>
         <div class = "chat-box-container">
             <div class = "chat-button-bar">
-                <button class ="chat-button" type="submit" value ="chat-close"  request = post>
+                <button class ="chat-button-openbutton" onclick="changeHeightOpen()">
+                    +
+                </button>
+                <button class ="chat-button-closebutton" onclick="changeHeightClose()">
                     -
                 </button>
             </div>
             <div class ="chat-container">
             </div>
-            <div class ="chat-entry">
-            </div>
+            <input class ="chat-entry">
+            </input>
         </div>
         <div class = "policy">
             <div class = "fixed-box">
@@ -103,7 +106,6 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        
-        <script src=" " async defer></script>
+        <script src= ”static/js/base.js” async defer></script>
     </body>
 </html>
