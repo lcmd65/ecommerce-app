@@ -1,5 +1,8 @@
 from flask import Flask
+from pymongo import MongoClient
 from app.auth.controllers.controllers import user_parsing
+import json
+from app.cache import cache
 
 
 class User():
@@ -13,7 +16,7 @@ class User():
         def user_parsing(self, username, password):
             user_information = user_parsing(username, password)
         
-        def to_dict(self):
+        def __dict__(self):
             return {
                 "username": self.username,
                 "password": self.password,
@@ -26,4 +29,11 @@ class User():
             import bson
             image = bson.decode(self.image)
             self.image = image
-            
+    
+        
+    
+    
+    
+    
+        
+        

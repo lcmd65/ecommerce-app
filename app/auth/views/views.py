@@ -7,13 +7,13 @@ from flask import (\
     url_for,
     current_app,
     g)
+import app
 from app import db
-from app.auth.models.models import User
+from app.auth.controllers.controllers import authentication
+from app.cache import cache
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
-from app.auth.controllers.controllers import authentication
 from flask_caching import Cache
-import app.cache
 import json
 
 auth_blueprint = Blueprint('auth_blueprint', __name__)
@@ -32,7 +32,7 @@ def login():
             if bool == True:
                 data_base.parsingUser()
                 model = dbModel(data_base._user)
-                app.cache.cache.set('database', json.dumps(model.__dict__()))
+                cache.set('database', json.dumps(model.__dict__()))
                 return redirect("/home")
             else: 
                 return render_template("auth/login.html", error="Invalid username or password.")
@@ -58,10 +58,10 @@ def forgotPassword():
                     data_base.getUser(user)
                     boolean = data_base.userAuthenticationChange(username, email, new_pass)
                     model = dbModel(data_base._user)
-                    app.cache.cache.set('database', json.dumps(model.__dict__()))
+                    cache.set('database', json.dumps(model.__dict__()))
                     if boolean == True:
                         return render_template("auth/forgot.html", error="Success change")
-                else: 
+                else:
                     return render_template("auth/forgot.html", error="Wrong username or email")
     except: 
         pass
@@ -96,12 +96,14 @@ def register():
 @auth_blueprint.route("/ecommerce",  methods = ['GET','POST'])
 def base():
     try:
+        from app.auth.models.product import Product
         if request.method == "POST":
             button_name = request.form.get("button")
             if button_name == "login":
                 return redirect('/login')
             elif button_name == "register":
                 return redirect('/register')
+            product = Product()
         return render_template("base.html")
     except:
         pass
