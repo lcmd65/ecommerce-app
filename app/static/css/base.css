@@ -306,15 +306,18 @@ ol {
     bottom: 5%;
     right: 0%;
     border-radius: 8px;
-    padding: 200px 150px;
     background-color: #fafafa;
     border-width: 1px;
     border-color: #120662;
+    padding: 200px 150px;
 }
 
 .chat-container {
-    position: relative;
-    height: 80%
+    position: absolute;
+    height: 100px;
+    background-color: #ffffff;
+    width: max-content;
+    z-index: 100;
 }
 
 .message-box {
@@ -327,6 +330,28 @@ ol {
 .chat-entry {
     border-radius: 8px;
     border-width: 1px;
+    border: #000;
     position: absolute;
     height: 10%;
+    background-color: #fdf8f8;
+    width: max-content;
+    z-index: 100;
+}
+
+.chat-button-bar {
+    height: 10px;
+    position: absolute;
+    margin-top: 0;
+    margin-bottom: 90%;
+}
+
+.chat-button {
+    border-radius: 5px;
+    margin-top: 0;
+    margin-right: 0;
+    width: 10px;
+    height: 10px;
+    background-color: #120662;
+    color: #ffffff;
+    position: absolute;
 }
