@@ -1,34 +1,137 @@
-.container {
-    width: 30%;
-    margin-left: 20%;
-    margin-top: 200px;
-    height: 30%;
+@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+body {
+    margin: 0;
+    font-size: .9rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: #054784;
+    text-align: center;
+    background-color: #ececec;
 }
 
-.entry-form {
-    height: 10px;
-    background-color: #eaeaea;
-    position: absolute;
-    margin-left: 5%;
-    margin-top: 5px;
-    font-size: 10px;
-}
-
-.label-privacy {
+.card {
     position: fixed;
-    margin-bottom: 0px;
-    margin-left: 0px;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: auto;
+}
+
+.card-body {
+    align-items: center;
+    align-content: center;
+    vertical-align: center;
+}
+
+.wrap-login {
+    margin-top: 100px;
+}
+
+.icon {
+    background: url("images/color_logo.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 80px;
+    width: 80px;
+    display: block;
+    align-self: center;
+}
+
+.login-form {
+    padding: 100px;
+    text-align: left;
+    min-width: 800px;
+    min-height: 1000px;
+    margin: auto;
+    display: table;
+}
+
+.login-form .row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.wrap-entry {
+    margin-top: 25px;
+}
+
+.wrap-label {
+    margin-top: 5px;
+    margin-bottom: 6px;
+    align-self: center;
+    text-align: center;
+    font-size: small;
+}
+
+.wrap-input-entry {
+    align-self: center;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.input100 {
     width: 100%;
-    background-color: #eaeaea;
-    font-size: 10px;
+    justify-self: auto;
+    border-width: 100%;
+    text-align: left;
+    height: 25px;
+    font-size: smaller;
 }
 
-.tittle-text {
-    font-size: 12px;
-    font-weight: 300;
+.wrap-login100-form-btn {
+    text-align: right;
+    vertical-align: right;
 }
 
-.card-name {
-    font-size: 14px;
-    font-weight: 500;
+.login100-form-btn {
+    width: 150px;
+    font-size: small;
+    border: 0px;
+    border-radius: 8px;
+    background-color: #4f67d1;
+    color: white;
+    margin-top: 15px;
+}
+
+.login100-form-btn:hover {
+    background-color: #15256e;
+}
+
+.login100-form-btn:placeholder {
+    background-color: #15256e;
+}
+
+.txt1 {
+    font-size: small;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: 5px;
+    text-align: left;
+}
+
+.txt2 {
+    font-size: small;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-right: 5px;
+    text-align: right;
+}
+
+.fixed-box {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    width: auto;
+    height: 30px;
+    background-color: #ececec;
+}
+
+.label-policy {
+    margin-bottom: 5px;
+    margin-left: 10px;
+    margin-top: 5px;
+    text-align: left;
+    position: relative;
+    font-size: small;
 }
