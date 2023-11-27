@@ -74,15 +74,12 @@
                     </ul>
                 </div>
             </div>
-            <div class = "main-workspace-container">
-                <form class = "container">
-                    <div class = "container-header">
-                    </div>
-                    <div class = "container-body">
-                    
-                    </div>
-                </form>
-            </div>
+            <form class = "main-workspace-container">
+                <div class = "main-workspace-container-header">
+                </div>
+                <div class = "main-workspace-container-body"> 
+                </div>
+            </form>
         </div>
         <div class = "chat-box-container">
             <div class = "chat-button-bar">
@@ -107,8 +104,6 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <script> const productData = {{ product_data | tojson | safe }};
-        </script>
-        <script src= "static/js/base.js" async defer></script>
+        <script async src= "static/js/base.js"></script>
     </body>
 </html>

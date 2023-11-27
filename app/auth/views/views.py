@@ -2,6 +2,7 @@
 from flask import (\
     Blueprint,
     request,
+    jsonify,
     render_template,
     redirect,
     url_for,
@@ -93,21 +94,30 @@ def register():
         return render_template("auth/register.html", error = None)
     except Exception as e:
         return render_template("auth/register.html", error = e)
+
+@auth_blueprint.route("/product", methods=['POST'])
+def product():
+    from app.auth.models.product import Product
+    product_database = Product()
+    if request.method == 'POST' or request.method == 'GET':
+        product_data_dict = product_database.to_dict()
+        return jsonify(product_data=product_data_dict)
+    else:
+        return jsonify(error='Method not allowed'), 405
+
+
     
 @auth_blueprint.route("/ecommerce",  methods = ['GET','POST'])
 def ecommerce():
     try:
-        from app.auth.models.product import Product
-        product_database = Product()
-        product_data_json = json_util.dumps(product_database.to_dict())
         if request.method == "POST":
             button_name = request.form.get("button")
             if button_name == "login":
                 return redirect('/login')
             elif button_name == "register":
                 return redirect('/register')
-            return render_template("base.html",  product_data = product_data_json)
-        return render_template("base.html",  product_data = product_data_json)
+            return render_template("base.html")
+        return render_template("base.html")
     except:
         pass
         

@@ -68,7 +68,7 @@ body {
     width: 100%;
     -webkit-transition: all 0.4s ease;
     transition: all 0.4s ease;
-    margin-top: 5%;
+    margin-top: 20px;
     background-color: #f5f5f5;
 }
 
@@ -193,11 +193,12 @@ body {
     background-color: #ffffff;
     justify-content: flex-end;
     height: 10px;
-    position: absolute;
+    position: fixed;
     font-size: 14px;
     align-items: flex-end;
-    margin-top: 5%;
-    margin-left: 70%;
+    margin-top: 20px;
+    margin-left: 65%;
+    margin-right: 10%;
     text-align: right;
 }
 
@@ -394,4 +395,46 @@ ol {
 
 .tree-workspace-container {
     background-color: #fdf8f8;
+}
+
+.body-space {
+    background-color: #ffffff;
+    margin-top: 50px;
+    margin-bottom: 0%x;
+    height: 90%;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    justify-content: flex-start;
+}
+
+.tree-workspace-container {
+    background-color: #eae9ef;
+    height: 100%;
+    width: 20%;
+    position: static;
+}
+
+.main-workspace-container {
+    background-color: #ffffff;
+    height: 1000vh;
+    width: 50%;
+    position: static;
+}
+
+.main-workspace-container-body {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    display: flex;
+}
+
+.product-card {
+    width: 100px;
+    height: 50px;
+    position: absolute;
+    justify-content: flex-start;
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
 }
