@@ -20,7 +20,7 @@ class Product:
         # Convert ObjectId to string before returning the dictionary
         list_data = []
         for item in self.documents:
-            list_data.append({"_id": str(item["_id"]), "name": str(item["name"]), "price": item["price"],"currency": item["currency"],"brand": item["brand"]})
+            list_data.append({"_id": str(item["_id"]), "name": str(item["name"]), "price": item["price"], "currency": item["currency"], "brand": item["brand"]})
         return list_data
 
     def set_cache(self):
