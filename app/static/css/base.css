@@ -393,10 +393,6 @@ ol {
     font-size: 10px;
 }
 
-.tree-workspace-container {
-    background-color: #fdf8f8;
-}
-
 .body-space {
     background-color: #ffffff;
     margin-top: 50px;
@@ -412,29 +408,94 @@ ol {
     background-color: #eae9ef;
     height: 100%;
     width: 20%;
-    position: static;
+    position: fixed;
 }
 
 .main-workspace-container {
     background-color: #ffffff;
     height: 1000vh;
     width: 50%;
-    position: static;
+    position: absolute;
+    margin-left: 30%;
 }
 
 .main-workspace-container-body {
+    margin-top: 50px;
+    margin-left: 10px;
     height: 100%;
-    width: 100%;
+    width: 138%;
     position: absolute;
-    display: flex;
+    display: inline-grid;
+    justify-content: flex-start;
+    overflow-y: auto;
 }
 
 .product-card {
-    width: 100px;
-    height: 50px;
-    position: absolute;
+    width: 300px;
+    height: 400px;
+    min-width: 300px;
+    position: relative;
+    display: flow-root;
     justify-content: flex-start;
     margin-top: 20px;
     margin-right: 10px;
     margin-left: 10px;
+    z-index: 50;
+    font-size: 12px;
+}
+
+.product-image {
+    width: 300px;
+    height: 200px;
+    min-width: 300px;
+    position: relative;
+    display: flow-root;
+    justify-content: flex-start;
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    background-color: rgb(255, 238, 238);
+    z-index: 50;
+    border-radius: 8px;
+    border-width: 1px;
+    border-color: #ffeaea;
+    border-style: solid;
+    font-size: 12px;
+}
+
+.tree-node {
+    list-style: none;
+    margin: 0;
+    margin-top: 50px;
+    padding: 0;
+    padding-left: 20px;
+    font-size: 12px;
+}
+
+.tree-node label {
+    cursor: pointer;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.tree-node input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.tree-node ul {
+    margin-left: 20px;
+    padding-left: 0;
+}
+
+.tree-node input[type="checkbox"]:checked+ul {
+    display: block;
+}
+
+.entry-search {
+    border-radius: 8px;
+    height: 22px;
+    margin-left: 20px;
+    margin-right: 10px;
+    font-size: 12px;
 }

@@ -17,8 +17,14 @@ from pymongo.server_api import ServerApi
 from flask_caching import Cache
 import json
 from bson import json_util
+import re
 
 auth_blueprint = Blueprint('auth_blueprint', __name__)
+
+def count_braces(input_str):
+    open_braces = input_str.count('{')
+    close_braces = input_str.count('}')
+    return open_braces, close_braces
 
 @auth_blueprint.route("/login",  methods = ['GET', 'POST'])
 def login():
@@ -95,18 +101,13 @@ def register():
     except Exception as e:
         return render_template("auth/register.html", error = e)
 
-@auth_blueprint.route("/product", methods=['POST'])
+@auth_blueprint.route("/product", methods=['GET','POST'])
 def product():
     from app.auth.models.product import Product
     product_database = Product()
-    if request.method == 'POST' or request.method == 'GET':
-        product_data_dict = product_database.to_dict()
-        return jsonify(product_data=product_data_dict)
-    else:
-        return jsonify(error='Method not allowed'), 405
+    data = product_database.to_dict()
+    return str(data).replace("'", "\"")
 
-
-    
 @auth_blueprint.route("/ecommerce",  methods = ['GET','POST'])
 def ecommerce():
     try:
@@ -118,7 +119,7 @@ def ecommerce():
                 return redirect('/register')
             return render_template("base.html")
         return render_template("base.html")
-    except:
-        pass
+    except Exception as e:
+        print(e)
         
 

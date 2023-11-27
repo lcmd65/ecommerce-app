@@ -46,6 +46,9 @@
                         <li>
                         <a href="/women">Women</a>
                         </li>
+                        <li> 
+                            <a><input class = "entry-search" type = "entry">  Search </a> 
+                        </li>
                     </ul>
                     </div>
                 </nav>
@@ -53,31 +56,37 @@
         </header>
         <div class = "body-space">
             <div class = "tree-workspace-container">
-                <div class = "container">
-                    <ul class = "brand-category">
-                        {%for item in brand_category%}
-                            <li class = "brand-category-li"> {{item.name}}
-                            </li>
-                        {%endfor%}
-                    </ul>
-                    </ul class = "price-category">
-                        {%for item in brand_category%}
-                            <li class = "brand-category-li"> {{item.name}}
-                            </li>
-                        {%endfor%}
-                    </ul>
-                    <ul class ="type-category">
-                        {%for item in brand_category%}
-                            <li class = "brand-category-li"> {{item.name}}
-                            </li>
-                        {%endfor%}
-                    </ul>
-                </div>
+                <ul class="tree-node">
+                    <li>
+                        <label><p> Brand of Product</p></label>
+                        <ul>
+                            <li><label><input type="checkbox"> Nike </label></li>
+                            <li><label><input type="checkbox"> Adidas</label></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <label><p>Price</p></label>
+                        <ul>
+                            <li><label><input type="checkbox"> 0 - 200 USD</label></li>
+                            <li><label><input type="checkbox"> 200 - 500 USD</label></li>
+                            <li><label><input type="checkbox"> 500 - 1000 USD</label></li>
+                            <li><label><input type="checkbox"> 1000+ USD</label></li>
+                        </ul>
+                    </li>
+                
+                    <li>
+                        <label><p> Availability</p></label>
+                        <ul>
+                            <li><label><input type="checkbox"> In Stock</label></li>
+                            <!-- Add more options if needed -->
+                        </ul>
+                    </li>
+                </ul>
             </div>
             <form class = "main-workspace-container">
                 <div class = "main-workspace-container-header">
                 </div>
-                <div class = "main-workspace-container-body"> 
+                <div class = "main-workspace-container-body">
                 </div>
             </form>
         </div>
@@ -104,6 +113,6 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <script async src= "static/js/base.js"></script>
+        <script src= "static/js/base.js"></script>
     </body>
 </html>

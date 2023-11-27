@@ -18,7 +18,10 @@ class Product:
 
     def to_dict(self):
         # Convert ObjectId to string before returning the dictionary
-        return [{**item, "_id": str(item["_id"])} for item in self.documents]
+        list_data = []
+        for item in self.documents:
+            list_data.append({"_id": str(item["_id"]), "name": str(item["name"]), "price": item["price"],"currency": item["currency"],"brand": item["brand"]})
+        return list_data
 
     def set_cache(self):
         # Use JSON.dumps to serialize the list of documents to a JSON string
