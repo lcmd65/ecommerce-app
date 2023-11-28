@@ -1,4 +1,4 @@
-from app.cache import cache
+import app.cache
 from app.db import database_connection
 import json
 
@@ -15,7 +15,7 @@ def authentication(username, password):
     if user_information !=None and user_information['password'] == password:
         from app.auth.models.user import User
         user = User(user_information)
-        cache.set('user' ,json.dumps(user.__dict__()))
+        app.cache.cache.set('user' ,json.dumps(user.__dict__()))
         return True
     else:
         return False
