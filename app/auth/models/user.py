@@ -1,10 +1,4 @@
-from flask import Flask
-from pymongo import MongoClient
-from app.auth.controllers.controllers import user_parsing
-import json
-from app.cache import cache
 from app.db import database_connection
-
 
 class User():
     def __init__(self, user_information = None):
@@ -16,16 +10,14 @@ class User():
         self.image = None
         self.chat_message = []
         
-        def __dict__(self):
-            return {
-                "id": self.id,
-                "username": self.username,
-                "password": self.password,
-                "email": self.email,
-                "gender":self.gender,
-                "image": self.image,
-                "chat_message": self.chat_message
-            }
+    def __dict__(self):
+        return {
+            "id": self.id,
+            "username": self.username,
+            "password": self.password,
+            "email": self.email,
+            "gender":self.gender,
+        }
         
     def user_parsing(self, username):
         client, database = database_connection()

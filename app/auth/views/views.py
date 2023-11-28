@@ -9,15 +9,6 @@ from flask import (\
     current_app,
     g)
 import app
-from app import db
-from app.auth.controllers.controllers import authentication
-from app.cache import cache
-from pymongo import MongoClient
-from pymongo.server_api import ServerApi
-from flask_caching import Cache
-import json
-from bson import json_util
-import re
 
 auth_blueprint = Blueprint('auth_blueprint', __name__)
 
@@ -64,20 +55,16 @@ def forgotPassword():
 @auth_blueprint.route("/register", methods = ['GET', 'POST'])
 def register():
     try:
+        from app.auth.controllers.controllers import register_user
         if request.method == "POST":
             username = request.values['user'] 
             password = request.values['pass']
             confirm_password = request.values['confirm_password']
             email = request.values['email'] 
-            id = request.values['id']
+            user_id = request.values['id']
             gender = request.values['gender']
             if confirm_password == password:
-                user = json.loads(app.cache.cache.get('database'))
-                data_base = db.DB()
-                data_base.getUser(user)
-                boolean = data_base.addUserMongoDB(username, email, password, id , gender)
-                model = dbModel(data_base._user)
-                app.cache.cache.set('database', json.dumps(model.__dict__()))
+                boolean = register_user(username, email, password, user_id , gender)
                 if boolean == True:
                     return render_template("auth/register.html", error = "Success")
                 else:   

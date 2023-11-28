@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href = "{{ url_for('static',filename='css/base.css') }}"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/lib/languages/python.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/a11y-dark.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>    
+    </head>
+    <body>
+        <div class = "user-header">
+            <div class = 'container'>
+                <nav class="navbar-user-information">
+                    <ul class="navbar-user-information-list">
+                        <li>
+                        <a href="#user_information">User information</a>
+                        </li>
+                        <li>
+                        <a href="/register">Cart <i class="fa fa-shopping-cart" style="font-size:36px"></i></a>
+                        </li>
+                        <li>
+                        <a href="/help">Help</a>
+                        </li>
+                    </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <header class="main-header">
+            <div class="container">
+                <nav class="navbar navbar-expand-lg main-nav px-0">
+                    <div class="collapse navbar-collapse" id="mainMenu">
+                    <ul class="navbar-nav ml-auto text-uppercase f1">
+                        <li>
+                            <img src="static/images/logo.png" alt="Description of the image" height="35" >
+                        </li>
+                        <li>
+                        <a href="#home" class="active active-first">Home</a>
+                        </li>
+                        <li>
+                        <a href="/men">Men</a>
+                        </li>
+                        <li>
+                        <a href="/women">Women ☕</a>
+                        </li>
+                        <li>
+                            <a href="/kid">Baby & Kid</a>
+                        </li>
+                        <li> 
+                            <a><input class = "entry-search" type = "entry">  Search </a> 
+                        </li>
+                    </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <img class = "img-background" src="static/images/bg.png">
+        <div class = "body-space">
+            <div class = "tree-workspace-container">
+                <ul class="tree-node">
+                    <li>
+                        <label><p> Brand of Product</p></label>
+                        <ul>
+                            <li><label><input type="checkbox"> Nike </label></li>
+                            <li><label><input type="checkbox"> Adidas</label></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <label><p>Price</p></label>
+                        <ul>
+                            <li><label><input type="checkbox"> 0 - 200 USD</label></li>
+                            <li><label><input type="checkbox"> 200 - 500 USD</label></li>
+                            <li><label><input type="checkbox"> 500 - 1000 USD</label></li>
+                            <li><label><input type="checkbox"> 1000+ USD</label></li>
+                        </ul>
+                    </li>
+                
+                    <li>
+                        <label><p> Availability</p></label>
+                        <ul>
+                            <li><label><input type="checkbox"> In Stock</label></li>
+                            <!-- Add more options if needed -->
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <form class = "main-workspace-container">
+                <div class = "main-workspace-container-header">
+                </div>
+                <div class = "main-workspace-container-body">
+                </div>
+            </form>
+        </div>
+
+        <div class = "chat-box-container">
+            <div class = "chat-button-bar">
+                <p class = "bot-label">SUSbot</p>
+                <button class ="chat-button-openbutton" onclick="changeHeightOpen()">
+                    +
+                </button>
+                <button class ="chat-button-closebutton" onclick="changeHeightClose()">
+                    -
+                </button>
+            </div>
+            <div class ="chat-box mt-3">
+
+            </div>
+                <form action = "/ecommerce", method = POST>
+                    <textarea class ="chat-entry" rows="1" placeholder="Chat" id="message-input" name ="chat"></textarea>
+                </from>
+            <button type="button" class="btn" id="send-btn"></button>
+        </div>
+        <div class = "policy">
+            <div class = "fixed-box">
+                <p class = "label-policy"> Policy @ 2023
+                </p>
+            </div>
+        </div>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <script src= "static/js/base.js"></script>
+    </body>
+</html>
