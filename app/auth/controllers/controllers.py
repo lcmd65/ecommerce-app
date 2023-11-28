@@ -12,7 +12,7 @@ def authentication(username, password):
     client.close()
     
     # parsing user and authentication
-    if user_information !=None and user_information['password'] == password:
+    if user_information != None and user_information['password'] == password:
         from app.auth.models.user import User
         user = User(user_information)
         app.cache.cache.set('user' ,json.dumps(user.__dict__()))

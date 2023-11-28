@@ -116,12 +116,11 @@
                     -
                 </button>
             </div>
-            <div class ="chat-box mt-3">
-
+            <div class = "chat-box">
             </div>
-                <form action = "/ecommerce", method = POST>
+            <form action = "/ecommerce", method = POST>
                     <textarea class ="chat-entry" rows="1" placeholder="Chat" id="message-input" name ="chat"></textarea>
-                </from>
+            </from>
             <button type="button" class="btn" id="send-btn"></button>
         </div>
         <div class = "policy">
@@ -133,6 +132,15 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
+        <script>
+            setInterval(highlightAll, 1000);
+            // Function to highlight code using highlight.js library
+            function highlightAll() {
+                document.querySelectorAll("pre code").forEach(block => {
+                    hljs.highlightBlock(block);
+                });
+            }
+        </script>
         <script src= "static/js/base.js"></script>
     </body>
 </html>

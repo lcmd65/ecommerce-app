@@ -54,6 +54,19 @@ function renderWorkspace(data_render) {
         workspace.appendChild(productCard);
     });
 }
+
+async function chatInit() {
+    const chatBox = document.querySelector(".chat-box");
+    const messageDiv = document.createElement("div");
+    messageDiv.classList.add("mt-3", "p-3", "rounded");
+    messageDiv.classList.add("bot-message");
+    messageDiv.innerHTML = `<img src="{{ url_for('static',filename='images/icons-bot.png') }}" class="bot-icon"><p>Please describe the product you are looking for</p>`;
+    chatBox.appendChild(messageDiv);
+
+    // Scroll the chat box to the bottom
+    chatBox.scrollTop = chatBox.scrollHeight;
+}
+
 async function renderProductView() {
     const response = await fetch("/product", method = ['GET']);
     const productDataText = await response.text();
@@ -82,22 +95,12 @@ const clickHeightClose = document.querySelector("chat-button-closebutton")
 
 clickHeightClose.addEventListener("click", changeHeightClose);
 clickHeightOpen.addEventListener("click", changeHeightOpen);
+window.addEventListener("load", renderProductView);
 
 const chatBox = document.querySelector(".chat-box");
 const chatContainer = document.querySelector(".chat-box-container");
 const messageInput = document.querySelector("#message-input");
 const sendBtn = document.querySelector("#send-btn");
-
-function chatInit() {
-    const messageDiv = document.createElement("div");
-    messageDiv.classList.add("mt-3", "p-3", "rounded");
-    messageDiv.classList.add("bot-message");
-    messageDiv.innerHTML = `<img src="{{ url_for('static',filename='images/icons-bot.png') }}" class="bot-icon"><p>Please describe the product you are looking for</p>`;
-    chatBox.appendChild(messageDiv);
-
-    // Scroll the chat box to the bottom
-    chatBox.scrollTop = chatBox.scrollHeight;
-}
 
 function addMessage(message, isUserMessage) {
     const messageDiv = document.createElement("div");

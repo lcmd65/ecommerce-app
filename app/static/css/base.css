@@ -568,16 +568,18 @@ ol {
     font-size: 20px;
     margin-right: 5px;
     border-radius: 50%;
-    width: 15px;
-    height: 15px;
+    width: 14px;
+    height: 14px;
+    z-index: 70;
 }
 
 .bot-icon {
     font-size: 20px;
     margin-right: 5px;
     border-radius: 50%;
-    width: 15px;
-    height: 15px;
+    width: 14px;
+    height: 14px;
+    z-index: 70;
 }
 
 .loader {
