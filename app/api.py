@@ -4,7 +4,8 @@ api_blueprint = Blueprint('api_blueprint', __name__)
 
 
 def processing(message):
-    """_summary_
+    """
+    _summary_ 
 
     Args:
         message (_type_): _description_

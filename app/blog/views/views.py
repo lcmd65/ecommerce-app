@@ -23,3 +23,5 @@ def home():
     return render_template("blog/home.html")
 
 
+
+

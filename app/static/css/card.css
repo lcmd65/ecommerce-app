@@ -1,0 +1,43 @@
+.card-container {
+    position: fixed;
+    width: 300px;
+    height: 500px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 100px;
+    z-index: 1000;
+}
+
+.card-item {
+    position: static;
+    height: 40px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.card-attribute-label {
+    font-size: 12px;
+}
+
+.card-button-pay {
+    background-color: rgb(227, 203, 226);
+    color: #000000;
+    border-radius: 8px;
+}
+
+.card-button-pay::placeholder {
+    color: #ffffff;
+    background-color: rgb(87, 8, 85);
+}
+
+.card-button-container-close {
+    background-color: None;
+    border-width: 0;
+    width: 25px;
+    height: 25px;
+}
+
+.card-button-item-destroy {
+    width: 25px;
+    height: 25px;
+}
