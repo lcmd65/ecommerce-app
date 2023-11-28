@@ -132,15 +132,7 @@
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <script>
-            setInterval(highlightAll, 1000);
-            // Function to highlight code using highlight.js library
-            function highlightAll() {
-                document.querySelectorAll("pre code").forEach(block => {
-                    hljs.highlightBlock(block);
-                });
-            }
-        </script>
         <script src= "static/js/base.js"></script>
+        <script src= "static/js/chatbot.js" defer></script>
     </body>
 </html>
