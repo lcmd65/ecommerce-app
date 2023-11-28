@@ -384,7 +384,7 @@ ol {
     width: 16px;
     height: 16px;
     background-color: rgb(36, 124, 55);
-    color: rgb(13, 82, 17);
+    color: #ffffff;
     position: static;
     font-size: 10px;
 }
@@ -398,7 +398,7 @@ ol {
     width: 16px;
     height: 16px;
     background-color: rgb(186, 160, 44);
-    color: rgb(81, 95, 18);
+    color: #ffffff;
     position: static;
     font-size: 10px;
 }
