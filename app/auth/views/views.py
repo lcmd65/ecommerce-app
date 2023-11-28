@@ -21,37 +21,28 @@ import re
 
 auth_blueprint = Blueprint('auth_blueprint', __name__)
 
-def count_braces(input_str):
-    open_braces = input_str.count('{')
-    close_braces = input_str.count('}')
-    return open_braces, close_braces
-
 @auth_blueprint.route("/login",  methods = ['GET', 'POST'])
 def login():
+    error = None
     try:
-        error = None
+        from app.auth.controllers.controllers import authentication
         if request.method == "POST":
             username = request.values['user'] 
             password = request.values['pass']
-            user = User(username, password, None, None, None)
-            data_base = db.DB()
-            data_base.getUser(user)
-            bool = data_base.userAuthentication(username, password)
-            if bool == True:
-                data_base.parsingUser()
-                model = dbModel(data_base._user)
-                cache.set('database', json.dumps(model.__dict__()))
+            boolean = authentication(username, password)
+            if boolean == True:
                 return redirect("/home")
             else: 
                 return render_template("auth/login.html", error="Invalid username or password.")
-    except:
-        pass
+    except Exception as e:
+        print('error oocur when login: ', e)
     return render_template('auth/login.html', error = error)
 
 @auth_blueprint.route("/forgot",  methods = ['GET', 'POST'])
 def forgotPassword():
+    error = None
     try:
-        error = None
+        from app.auth.controllers.controllers import confirm_authentication
         if request.method == "POST":
             if request.form.get("button") == "back":
                 return render_template("auth/login.html", error = None)
@@ -60,19 +51,13 @@ def forgotPassword():
                 email = request.values['email']
                 new_pass = request.values['new_password']
                 confirm_pass = request.values['confirm_new_password']
-                if new_pass == confirm_pass:
-                    user = json.loads(app.cache.cache.get('database'))
-                    data_base = db.DB()
-                    data_base.getUser(user)
-                    boolean = data_base.userAuthenticationChange(username, email, new_pass)
-                    model = dbModel(data_base._user)
-                    cache.set('database', json.dumps(model.__dict__()))
-                    if boolean == True:
-                        return render_template("auth/forgot.html", error="Success change")
+                boolean = confirm_authentication(username, email, new_pass, confirm_pass)
+                if boolean == True:
+                    return render_template("auth/forgot.html", error="successful")
                 else:
                     return render_template("auth/forgot.html", error="Wrong username or email")
-    except: 
-        pass
+    except Exception as e:
+        print('error oocur when login: ', e)
     return render_template("forgot.html", error = error)
     
 
