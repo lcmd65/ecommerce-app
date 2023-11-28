@@ -1,8 +1,3 @@
-certifi
-charset-normalizer
-click
-dnspython
-filelock
 Flask
 fsspec
 gensim
@@ -12,7 +7,6 @@ idna
 itsdangerous
 Jinja2
 joblib
-MarkupSafe
 nltk
 packaging
 Pillow
@@ -20,15 +14,10 @@ pymongo
 PyYAML
 regex
 requests
-safetensors
 scipy
-smart-open
 tokenizers
 tqdm
 transformers
-typing_extensions
-urllib3
-Werkzeug
 pandas
 flask-sqlalchemy
 flask-caching
