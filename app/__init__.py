@@ -12,12 +12,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask import g, session
 from flask_caching import Cache
 
-class AppVariable():
-    def __init__(self):
-        self._uri = "mongodb+srv://datlemindast:Minhdat060501@cluster0.ixcliyp.mongodb.net/?retryWrites=true&w=majority"
-        self._client = None
-        self._user = None
-
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     # create and configure the app
