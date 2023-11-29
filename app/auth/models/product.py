@@ -25,8 +25,3 @@ class Product:
 
         # Set the JSON string to the cache
         cache.set('Product', product_json)
-
-    def display(self):
-        for item in self.to_dict():
-            print(item)
-

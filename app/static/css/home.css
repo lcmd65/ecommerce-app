@@ -603,3 +603,20 @@ ol {
         transform: rotate(360deg);
     }
 }
+
+.item-view-container {
+    position: static;
+    z-index: 1000;
+    width: 90%;
+    background-color: #f9f9f9;
+    justify-content: flex-start;
+    display: grid;
+}
+
+.item-view-container-line {
+    position: static;
+    margin-top: 10px;
+    height: 30px;
+    width: 100%;
+    font-size: 12px;
+}

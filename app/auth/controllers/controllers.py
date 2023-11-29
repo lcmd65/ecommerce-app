@@ -42,6 +42,7 @@ def confirm_authentication(username, email, newpass, confirm_newpass):
 def register_user(username, email, password, user_id , gender):
     client, database = database_connection()
     collection = database["User"]
+    cart_collection = database["User_Cart"] 
     
     # Check if the username or email is already registered
     existing_user = collection.find_one({'$or': [{'username': username}, {'email': email}, {'id': user_id}]})
@@ -59,6 +60,12 @@ def register_user(username, email, password, user_id , gender):
             'gender': gender,
             'id': user_id
         }
+        
+        new_cart = {
+            'id': user_id,
+            'cart': []
+        }
+        
         collection.insert_one(new_user)
         client.close()
         return True  # Registration successful
