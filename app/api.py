@@ -83,9 +83,9 @@ def cart_add():
         items = json.loads(cart_db.get('item', '[]')).append(item_id)
         collection.update_one({'id': user_id}, {'$set': {'item': json.dumps(items)}})
         client.close()
-        return True
+        return "True"
     except:
-        return False
+        return "False"
     
     
 

@@ -631,3 +631,19 @@ ol {
     color: #e5e5e5;
     background-color: #120662;
 }
+
+.main-workspace-container-header {
+    height: auto;
+    width: 100%;
+    border-width: 1px;
+    border-style: solid;
+    z-index: 1000;
+    position: static;
+}
+
+.cart-container {
+    position: fixed;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 20%;
+}

@@ -16,7 +16,7 @@ async function eventClickedItem(item_click) {
     item_name.innerHTML = item_click.name;
     item.appendChild(item_name);
 
-    const _id = item_click._id;
+    const _id = item_click.id;
     const item_description = document.createElement("p");
     item_description.classList.add("item-view-container-line");
     const request = await fetch('/description_get', {
@@ -82,5 +82,5 @@ async function eventClickedItem(item_click) {
 }
 
 item_product.forEach(element => {
-    element.addEventListener("click", eventClickedItem(element.value));
+    element.addEventListener("click", eventClickedItem(element));
 });
