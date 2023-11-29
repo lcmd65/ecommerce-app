@@ -1,8 +1,8 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 body {
     margin: 0;
-    font-size: 12px;
-    font-weight: 400;
+    font-size: 11px;
+    font-weight: 300;
     line-height: 1.6;
     color: #054784;
     text-align: center;
@@ -15,6 +15,7 @@ body {
     right: 0;
     left: 0;
     width: auto;
+    top: 0;
 }
 
 .card-body {
@@ -40,10 +41,11 @@ body {
 .login-form {
     padding: 100px;
     text-align: left;
-    min-width: 800px;
-    min-height: 1000px;
+    width: 50%;
+    height: 50%;
     margin: auto;
     display: table;
+    min-width: 600px;
 }
 
 .login-form .row {
@@ -102,7 +104,7 @@ body {
 }
 
 .txt1 {
-    font-size: small;
+    font-size: 12px;
     margin-bottom: 5px;
     margin-top: 5px;
     margin-left: 5px;
@@ -110,7 +112,7 @@ body {
 }
 
 .txt2 {
-    font-size: small;
+    font-size: 12px;
     margin-bottom: 5px;
     margin-top: 5px;
     margin-right: 5px;

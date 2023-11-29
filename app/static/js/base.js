@@ -39,6 +39,7 @@ function renderProductCard(product) {
     productCard.appendChild(productBrand);
 
     const buy = document.createElement("button");
+    buy.classList.add("button-buy")
     buy.type = "submit"; // Set the button type to "submit"
     buy.value = product._id;
     buy.innerHTML = "Buy"; // Corrected syntax for setting inner HTML

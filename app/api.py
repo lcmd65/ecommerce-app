@@ -54,21 +54,42 @@ def chat():
 
 @api_blueprint.route("/description_get", methods = ['GET', 'POST'])
 def description_get():
-    message = request.json.get('id') # product id
+    message = request.json.get('_id') # product id
     client, database = database_connection()
     collection = database["Product"]
-    item = collection.find_one({'id': message})
+    item = collection.find_one({'_id': message})
     client.close()
     return item['description']
 
 @api_blueprint.route("/cart_get", methods = ['GET', 'POST'])
 def cart_get():
-    message = request.json.get('id') # user id
+    cart = app.cache.cache.get("cart")
+    if cart == None :
+        message = request.json.get('user_id')
+        client, database = database_connection()
+        collection = database["User_Card"]
+        cart = collection.find_one({'id': message})
+        client.close()
+    return jsonify(json.dumps(cart))
+
+@api_blueprint.route("/cart_add", methods = ['GET', 'POST'])
+def cart_add():
+    try:
+        item_id = request.json.get('_id') 
+        user_id = app.cache.cache.get('user')['id']
+        client, database = database_connection()
+        collection = database["User_Card"]
+        cart_db = collection.find_one({'id': user_id})
+        items = json.loads(cart_db.get('item', '[]')).append(item_id)
+        collection.update_one({'id': user_id}, {'$set': {'item': json.dumps(items)}})
+        client.close()
+        return True
+    except:
+        return False
     
-    client, database = database_connection()
-    collection = database["User_Card"]
-    card = collection.find_one({'id': message})
-    client.close()
     
-    return jsonify(json.dumps(card))
+
+    
+    
+
     
