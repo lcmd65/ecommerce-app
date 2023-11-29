@@ -2,18 +2,14 @@ from pymongo import MongoClient
 import json
 from bson import ObjectId  # Import ObjectId from bson
 from app.cache import cache
+from app.db import database_connection
 
 class Product:
     def __init__(self):
         # Load the MongoDB connection details from the schema.json file
-        with open("app/schema.json", "r") as file:
-            config = json.load(file)
-
-        # Connect to MongoDB
-        client = MongoClient(config["mongo_uri"])
-        database = client["Datathon"]
-        self.collection = database["Product"]
-        self.documents = list(self.collection.find())  # Convert the cursor to a list
+        client, database = database_connection()
+        collection = database["Product"]
+        self.documents = list(collection.find())  # Convert the cursor to a list
         client.close()
 
     def to_dict(self):
