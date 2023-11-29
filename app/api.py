@@ -1,5 +1,7 @@
 from flask import Blueprint, request, jsonify
+from app.db import database_connection
 import app.cache
+import json
 
 ## chat data store in cache
 ## chat_data = 
@@ -49,3 +51,24 @@ def chat():
     message = request.json.get('message')
     respone = processing(message)
     return jsonify(respone)
+
+@api_blueprint.route("/description_get", methods = ['GET', 'POST'])
+def description_get():
+    message = request.json.get('id') # product id
+    client, database = database_connection()
+    collection = database["Product"]
+    item = collection.find_one({'id': message})
+    client.close()
+    return item['description']
+
+@api_blueprint.route("/cart_get", methods = ['GET', 'POST'])
+def cart_get():
+    message = request.json.get('id') # user id
+    
+    client, database = database_connection()
+    collection = database["User_Card"]
+    card = collection.find_one({'id': message})
+    client.close()
+    
+    return jsonify(json.dumps(card))
+    

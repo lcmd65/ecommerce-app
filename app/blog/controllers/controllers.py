@@ -13,4 +13,5 @@ def chat_to_cache(chat_message):
         app.cache.cache.set("chat", json.dumps(chat_data.to_dict()))
 
 
-def to_database
+def to_database():
+    pass

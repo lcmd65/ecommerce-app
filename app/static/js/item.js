@@ -5,24 +5,27 @@ async function eventClickedItem(item_click) {
     item.classList.add("item-view-container");
 
     const item_id = document.createElement("p");
-    item_id.classList.add("item-view-container-line")
-    item_id.innerHTML = item_click.name;
+    item_name.classList.add("item-view-container-line")
+    item_name.innerHTML = item_click.name;
 
-    const item_description = document.createElement("p")
+    const user_id = item_click.id;
+
+    const item_description = document.createElement("p");
+    item_description.classList.add("item-view-container-line");
     const request = await fetch('/description_get', {
         method: ["POST"],
         header: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(item_click.description)
+        body: JSON.stringify(id = user_id)
     });
 
-    const respone = request.json()
+    const respone = await request.json()
     item_description.innerHTML = JSON.parse(respone)
 
-
-
-
+    const button_cart = documnet.createElement("button")
+    button_cart.classList.add("button-card")
+    button_cart.innerHTML = "Add to card"
 
 
     while (workspace_container.firstChild) {
