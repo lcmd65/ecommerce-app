@@ -1,4 +1,4 @@
-# authentication function of nohg.application
+# authentication route of application
 from flask import (\
     Blueprint,
     request,
@@ -10,6 +10,36 @@ from flask import (\
     g)
 
 auth_blueprint = Blueprint('auth_blueprint', __name__)
+
+@auth_blueprint.route("/product", methods=['GET','POST'])
+def product():
+    from app.auth.models.product import Product
+    product_database = Product()
+    data = product_database.to_dict()
+    return str(data).replace("'", "\"")
+
+# base route define
+@auth_blueprint.route("/ecommerce",  methods = ['GET','POST'])
+def ecommerce():
+    """
+    Base window of ecommerce app
+
+    Returns:
+        base.html
+    """
+    try:
+        if request.method == "POST":
+            button_name = request.form.get("button")
+            if button_name == "login":
+                return redirect('/login')
+            elif button_name == "register":
+                return redirect('/register')
+            return render_template("base.html")
+        return render_template("base.html")
+    except Exception as e:
+        print(e)
+        
+
 
 @auth_blueprint.route("/login",  methods = ['GET', 'POST'])
 def login():
@@ -31,15 +61,15 @@ def login():
             else: 
                 return render_template("auth/login.html", error="Invalid username or password.")
         elif request.method == "GET":
-            if request.form.get("button") =="back":
-                return redirect(url_for('auth_blueprint.ecommerce'))
+            if request.form.get("button") == "back":
+                return redirect('/ecommerce')
     except Exception as e:
         print('error oocur when login: ', e)
     return render_template('auth/login.html', error = error)
 
 # route forgot
 @auth_blueprint.route("/forgot",  methods = ['GET', 'POST'])
-def forgotPassword():
+def forgot():
     """
     forgot password route render template
     
@@ -92,36 +122,8 @@ def register():
                     return render_template("auth/register.html", error = "Can't register new user")  
         elif request.method == "GET":
             if request.form.get("button") == "back":
-                return redirect(url_for('auth_blueprint.ecommerce')) 
+                return redirect('/ecommerce')
         return render_template("auth/register.html", error = None)
     except Exception as e:
         return render_template("auth/register.html", error = e)
-
-@auth_blueprint.route("/product", methods=['GET','POST'])
-def product():
-    from app.auth.models.product import Product
-    product_database = Product()
-    data = product_database.to_dict()
-    return str(data).replace("'", "\"")
-
-@auth_blueprint.route("/ecommerce",  methods = ['GET','POST'])
-def ecommerce():
-    """
-    base window of ecommerce app
-
-    Returns:
-        base.html
-    """
-    try:
-        if request.method == "POST":
-            button_name = request.form.get("button")
-            if button_name == "login":
-                return redirect('/login')
-            elif button_name == "register":
-                return redirect('/register')
-            return render_template("base.html")
-        return render_template("base.html")
-    except Exception as e:
-        print(e)
-        
 
