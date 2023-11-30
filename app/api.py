@@ -5,6 +5,19 @@ import json
 
 ## chat data store in cache
 ## chat_data = {id: str, chat: []}
+## features:
+##  //_id
+##  //name
+##  //description
+##  //availability
+##  //brand
+##  //color
+##  //currency
+##  //price
+##  //avg_rating
+##  //review_count
+##  //scraped_at
+##  //url
 
 api_blueprint = Blueprint('api_blueprint', __name__)
 
