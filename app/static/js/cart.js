@@ -1,9 +1,9 @@
-function eventClickedCart() {
+async function eventClickedCart() {
     const body = document.querySelector("body");
-    const message = fetch("/card_get", {
+    const message = await fetch("/card_get", {
         method: "GET"
     });
-    const respone = JSON.parse(message.json());
+    const respone = await JSON.parse(message.json());
     const item = respone.item;
 
     const cart = document.createElement("div");
