@@ -16,7 +16,7 @@ async function eventClickedItem(item_click) {
     item_name.innerHTML = item_click.name;
     item.appendChild(item_name);
 
-    const _id = item_click.id;
+    const _id = item_click.value;
     const item_description = document.createElement("p");
     item_description.classList.add("item-view-container-line");
 
@@ -35,7 +35,7 @@ async function eventClickedItem(item_click) {
     const button_cart = document.createElement("button");
     button_cart.classList.add("button-card");
     button_cart.innerHTML = "Add to cart";
-    button_cart.value = item_click._id;
+    button_cart.value = item_click.value;
     item.appendChild(button_cart);
 
     button_cart.addEventListener("click", async function() {

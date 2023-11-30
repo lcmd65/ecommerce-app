@@ -19,15 +19,21 @@ def authentication(username, password):
     
     # Convert the cursor to a list
     user_information = collection.find_one({'username': username})
-    client.close()
     
     # parsing user and authentication
     if user_information != None and user_information['password'] == password:
         from app.auth.models.user import User
         user = User(user_information)
+        cart_collection = database["User_Cart"]
+        cart = cart_collection.find_one({"id": (user.__dict__())["id"]})
+        cart["_id"] = str(cart["_id"])
         app.cache.cache.set('user' ,json.dumps(user.__dict__()))
+        app.cache.cache.set('cart', json.dumps(cart))
+        print(json.dumps(cart))
+        client.close()
         return True
     else:
+        client.close()
         return False
         
 def confirm_authentication(username, email, newpass, confirm_newpass):
@@ -102,6 +108,7 @@ def register_user(username, email, password, user_id , gender):
         }
         
         collection.insert_one(new_user)
+        cart_collection.insert_one(new_cart)
         client.close()
         return True  # Registration successful
     

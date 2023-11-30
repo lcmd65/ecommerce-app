@@ -13,7 +13,9 @@ def extract_information(message):
     call api exctract user's featrues (base model) chat from user text
 
     Args:
-        message (_type_): _description_
+        message (str): user message after prprocessing
+    returns:
+        features (list)
     """
     pass
 
@@ -22,13 +24,21 @@ def validate(features):
     check the data collection of user's features
 
     Args:
-        features (_type_): _description_
+        features (list): list[dict[feature_name: feature_data]]
+    
+    returns:
+        features_missing
     """
     pass
 
-def prompt_generation_processing():
+def prompt_generation_processing(features_missing):
     """
-    if the validate
+    if the validate return features_missing, in that features_missing != None, generate prompt for continues extraction
+    
+    Args:
+        fetures_missing (list): list[feature_name]
+    returns:
+        prompt questtion (str): bot question
     """
     pass
 
@@ -37,10 +47,10 @@ def processing(message):
     message overall processing
 
     Args:
-        message (_type_): _description_
+        message (str): user message input
 
     Returns:
-        _type_: _description_
+        respone: system bot message output
     """
     features = extract_information(respone)
     while validate(features) == False:
