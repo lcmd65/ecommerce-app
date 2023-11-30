@@ -2,7 +2,8 @@ from flask import Blueprint, request, jsonify
 from app.db import database_connection
 
 ## chat data store in cache
-## chat_data = {id: str, chat: []}
+## chat: = {id: str, chat: []}
+## user: {id:str, username:str, password: str, email:str, gender: M/F}
 ## features:
 ##  //_id
 ##  //name
