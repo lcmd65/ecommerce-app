@@ -4,12 +4,13 @@ import app.cache
 import json
 
 ## chat data store in cache
-## chat_data = 
+## chat_data = {id: str, chat: []}
 
 api_blueprint = Blueprint('api_blueprint', __name__)
 
 def extract_information(message):
-    """_summary_
+    """
+    call api exctract user's featrues (base model) chat from user text
 
     Args:
         message (_type_): _description_
@@ -17,7 +18,8 @@ def extract_information(message):
     pass
 
 def validate(features):
-    """_summary_
+    """
+    check the data collection of user's features
 
     Args:
         features (_type_): _description_
@@ -25,11 +27,14 @@ def validate(features):
     pass
 
 def prompt_generation_processing():
+    """
+    if the validate
+    """
     pass
 
 def processing(message):
     """
-    _summary_ 
+    message overall processing
 
     Args:
         message (_type_): _description_
@@ -48,12 +53,24 @@ def processing(message):
             
 @api_blueprint.route('/chat_api', methods = ['GET', 'POST'])
 def chat():
+    """
+    chat api
+
+    Returns:
+        respone: json(str)
+    """
     message = request.json.get('message')
     respone = processing(message)
     return jsonify(respone)
 
 @api_blueprint.route("/description_get", methods = ['GET', 'POST'])
 def description_get():
+    """
+    get item product description view when click detail to product
+
+    Returns:
+        description: str
+    """
     message = request.json.get('_id') # product id
     client, database = database_connection()
     collection = database["Product"]
@@ -63,6 +80,12 @@ def description_get():
 
 @api_blueprint.route("/cart_get", methods = ['GET', 'POST'])
 def cart_get():
+    """
+    get the cart data when click cart icon button
+
+    Returns:
+        cart: [id: user_id, [cart_data: data]]
+    """
     cart = app.cache.cache.get("cart")
     if cart == None :
         message = request.json.get('user_id')
@@ -74,6 +97,12 @@ def cart_get():
 
 @api_blueprint.route("/cart_add", methods = ['GET', 'POST'])
 def cart_add():
+    """
+    cart add one item when event clicked
+
+    Returns:
+        bool: result of event item add to db
+    """
     try:
         item_id = request.json.get('_id') 
         user_id = app.cache.cache.get('user')['id']
