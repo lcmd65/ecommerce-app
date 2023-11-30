@@ -3,6 +3,16 @@ from app.db import database_connection
 import json
 
 def authentication(username, password):
+    """
+    authentication processing for login
+
+    Args:
+        username (str): account username
+        password (str): account password
+
+    Returns:
+        bool: result of event
+    """
     # connection to db from schema
     client, database = database_connection()
     collection = database["User"]
@@ -21,6 +31,18 @@ def authentication(username, password):
         return False
         
 def confirm_authentication(username, email, newpass, confirm_newpass):
+    """
+    authentication and update password
+
+    Args:
+        username (str): username account
+        email (str): user email
+        newpass (str): user new password
+        confirm_newpass (_type_): confirm user new password
+
+    Returns:
+        bool: result of event
+    """
     if newpass == confirm_newpass:
         client, database = database_connection()
         collection = database["User"]
@@ -40,6 +62,19 @@ def confirm_authentication(username, email, newpass, confirm_newpass):
             return False  # User not found
 
 def register_user(username, email, password, user_id , gender):
+    """
+    register new user
+
+    Args:
+        username (str): username account
+        email (str): user email
+        password (str): user password
+        user_id (str): id
+        gender (M/F): Male or Female
+
+    Returns:
+        bool: result of event 
+    """
     client, database = database_connection()
     collection = database["User"]
     cart_collection = database["User_Cart"] 
