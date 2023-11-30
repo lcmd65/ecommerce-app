@@ -70,7 +70,7 @@ async function chatInit() {
 }
 
 async function renderProductView() {
-    const response = await fetch("/product", method = ['GET']);
+    const response = await fetch("/product", { method: "GET" });
     const productDataText = await response.text();
     const productData = JSON.parse(productDataText);
     renderWorkspace(productData);

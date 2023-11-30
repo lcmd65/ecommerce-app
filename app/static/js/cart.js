@@ -1,15 +1,7 @@
-setInterval(highlightAll, 1000);
-// Function to highlight code using highlight.js library
-function highlightAll() {
-    document.querySelectorAll("cart").forEach(block => {
-        hljs.highlightBlock(block);
-    });
-}
-
 async function eventClickedCart() {
     const body = document.querySelector("body");
     const message = await fetch("/card_get", {
-        method: ["GET"]
+        method: "GET"
     });
     const respone = await JSON.parse(message.json());
 
@@ -30,7 +22,6 @@ async function eventClickedCart() {
     });
     cart.appendChild(button_destroy);
     body.appendChild(cart);
-    highlightAll();
 }
 
 const cartIcon = document.querySelector("#card-icon");

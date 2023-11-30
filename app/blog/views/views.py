@@ -16,11 +16,12 @@ blog_blueprint = Blueprint('blog_blueprint', __name__)
 def home():
     from app.auth.models.user import User
     user = json.loads(app.cache.cache.get('user')) # cache get
+    print(user)
     user_model = User(user) # NULL data user
     
     if request.method == "POST":
-        render_template("blog/home.html")
-    return render_template("blog/home.html")
+        render_template("blog/home.html" ,user_name = user["username"])
+    return render_template("blog/home.html", user_name = user["username"])
 
 
 

@@ -19,9 +19,10 @@ async function eventClickedItem(item_click) {
     const _id = item_click.id;
     const item_description = document.createElement("p");
     item_description.classList.add("item-view-container-line");
+
     const request = await fetch('/description_get', {
-        method: ["POST"],
-        header: {
+        method: "POST",
+        headers: {
             "Content-Type": "application/json",
         },
         body: JSON.stringify({ _id })
@@ -33,14 +34,14 @@ async function eventClickedItem(item_click) {
 
     const button_cart = document.createElement("button");
     button_cart.classList.add("button-card");
-    button_cart.innerHTML = "Add to card";
+    button_cart.innerHTML = "Add to cart";
     button_cart.value = item_click._id;
     item.appendChild(button_cart);
 
     button_cart.addEventListener("click", async function() {
         const request_add = await fetch('/cart_add', {
-            method: ["POST"],
-            header: {
+            method: "POST",
+            headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({ _id })
@@ -52,9 +53,9 @@ async function eventClickedItem(item_click) {
                 workspace_container.removeChild(workspace_container.firstChild);
             }
             const textmess = document.createElement("p");
-            textmess.innerHTML = "Success"
+            textmess.innerHTML = "Success";
             workspace_container.appendChild(textmess);
-            button_destroy = document.createElement("button");
+            const button_destroy = document.createElement("button");
             button_destroy.innerHTML = "OK";
             button_destroy.addEventListener("click", function() {
                 while (workspace_container.firstChild) {
@@ -67,9 +68,9 @@ async function eventClickedItem(item_click) {
                 workspace_container.removeChild(workspace_container.firstChild);
             }
             const textmess = document.createElement("p");
-            textmess.innerHTML = "Fail"
+            textmess.innerHTML = "Fail";
             workspace_container.appendChild(textmess);
-            button_destroy = document.createElement("button");
+            const button_destroy = document.createElement("button");
             button_destroy.innerHTML = "OK";
             button_destroy.addEventListener("click", function() {
                 while (workspace_container.firstChild) {
@@ -82,5 +83,5 @@ async function eventClickedItem(item_click) {
 }
 
 item_product.forEach(element => {
-    element.addEventListener("click", eventClickedItem(element));
+    element.addEventListener("click", () => eventClickedItem(element));
 });

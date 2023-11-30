@@ -197,7 +197,7 @@ body {
     font-size: 14px;
     align-items: flex-end;
     margin-top: 20px;
-    margin-left: 65%;
+    margin-left: 60%;
     margin-right: 10%;
     text-align: right;
 }
@@ -633,11 +633,11 @@ ol {
 }
 
 .main-workspace-container-header {
-    height: auto;
+    min-height: 0px;
+    max-height: 200px;
     width: 100%;
     border-width: 1px;
     border-style: solid;
-    z-index: 1000;
     position: static;
 }
 
@@ -646,4 +646,16 @@ ol {
     margin-left: 15%;
     margin-right: 15%;
     margin-top: 20%;
+    height: 500px;
+    width: 500px;
+    z-index: 10000;
+}
+
+.dear-text {
+    position: fixed;
+    margin-top: 10px;
+    margin-left: 5%;
+    font-size: 12px;
+    font-weight: bold;
+    color: #244dcb;
 }
