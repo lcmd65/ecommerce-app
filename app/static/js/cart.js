@@ -4,10 +4,11 @@ function eventClickedCart() {
         method: "GET"
     });
     const respone = JSON.parse(message.json());
+    const item = respone.item;
 
     const cart = document.createElement("div");
     cart.classList.add("cart-container");
-    respone.item.forEach(element => {
+    item.forEach(element => {
         const cart_item = document.createElement("div");
         cart_item.innerHTML = element;
         cart.appendChild(cart_item);

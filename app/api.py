@@ -98,10 +98,11 @@ def cart_get():
     """
     cart = app.cache.cache.get("cart")
     if cart == None :
-        message = request.json.get('user_id')
+        user = app.cache.cache.get("user")
+        user_id = user["id"]
         client, database = database_connection()
         collection = database["User_Card"]
-        cart = collection.find_one({'id': message})
+        cart = collection.find_one({'id': user_id})
         client.close()
     return jsonify(json.dumps(cart))
 
