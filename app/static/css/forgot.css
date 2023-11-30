@@ -3,18 +3,18 @@
 }
 
 .nav-bar {
-    margin-top: 0px;
+    margin-top: 50px;
     height: 35px;
     align-items: left;
-    background-color: #15256e;
+    background-color: rgb(236, 236, 236);
     flex-direction: column;
 }
 
 .btn-nav {
-    margin-top: 10px;
+    margin-top: 5px;
     position: relative;
-    background-color: #15256e;
-    color: #ffffff;
+    background-color: rgb(236, 236, 236);
+    color: #000000;
     border: 0px;
     margin-left: 20px;
     font-size: 12px;

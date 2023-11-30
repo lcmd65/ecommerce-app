@@ -30,14 +30,13 @@ def ecommerce():
     try:
         if request.method == "POST":
             button_name = request.form.get("button")
-            if button_name == "login":
-                return redirect('/login')
-            elif button_name == "register":
-                return redirect('/register')
+            if button_name == "login": return redirect('/login')
+            elif button_name == "register": return redirect('/register')
             return render_template("base.html")
         return render_template("base.html")
-    except Exception as e:
-        print(e)
+    except Exception as e: 
+        print("error",e)
+    return render_template("base.html")
         
 
 
@@ -53,16 +52,16 @@ def login():
     try:
         from app.auth.controllers.controllers import authentication
         if request.method == "POST":
-            username = request.values['user'] 
-            password = request.values['pass']
-            boolean = authentication(username, password)
-            if boolean == True:
-                return redirect("/home")
-            else: 
-                return render_template("auth/login.html", error="Invalid username or password.")
-        elif request.method == "GET":
             if request.form.get("button") == "back":
                 return redirect('/ecommerce')
+            else:
+                username = request.values['user'] 
+                password = request.values['pass']
+                boolean = authentication(username, password)
+                if boolean == True:
+                    return redirect("/home")
+                else: 
+                    return render_template("auth/login.html", error="Invalid username or password.")
     except Exception as e:
         print('error oocur when login: ', e)
     return render_template('auth/login.html', error = error)
@@ -94,7 +93,7 @@ def forgot():
                     return render_template("auth/forgot.html", error="Wrong username or email")
     except Exception as e:
         print('error oocur when login: ', e)
-    return render_template("forgot.html", error = error)
+    return render_template("auth/forgot.html", error = error)
     
 
 @auth_blueprint.route("/register", methods = ['GET', 'POST'])
@@ -108,21 +107,21 @@ def register():
     try:
         from app.auth.controllers.controllers import register_user
         if request.method == "POST":
-            username = request.values['user'] 
-            password = request.values['pass']
-            confirm_password = request.values['confirm_password']
-            email = request.values['email'] 
-            user_id = request.values['id']
-            gender = request.values['gender']
-            if confirm_password == password:
-                boolean = register_user(username, email, password, user_id , gender)
-                if boolean == True:
-                    return render_template("auth/register.html", error = "Success")
-                else:   
-                    return render_template("auth/register.html", error = "Can't register new user")  
-        elif request.method == "GET":
             if request.form.get("button") == "back":
                 return redirect('/ecommerce')
+            else:
+                username = request.values['user'] 
+                password = request.values['pass']
+                confirm_password = request.values['confirm_password']
+                email = request.values['email'] 
+                user_id = request.values['id']
+                gender = request.values['gender']
+                if confirm_password == password:
+                    boolean = register_user(username, email, password, user_id , gender)
+                    if boolean == True:
+                        return render_template("auth/register.html", error = "Success")
+                    else:   
+                        return render_template("auth/register.html", error = "Can't register new user")  
         return render_template("auth/register.html", error = None)
     except Exception as e:
         return render_template("auth/register.html", error = e)

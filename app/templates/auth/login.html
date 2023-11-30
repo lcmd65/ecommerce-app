@@ -9,9 +9,11 @@
 <!--===============================================================================================-->	
 </head>
 <body>
-	<form class = "nav-button-container" action ="/login" method = get>
-		<button class = "btn-nav" type ="submit" value ="back" name= "button"> Back </button>
-	</form>
+	<div class = "nav-bar">
+		<form class = "nav-button-container" action ="/login" method = post>
+			<button class = "btn-nav" type ="submit" value ="back" name= "button"> Back <img src="static/images/left-arrow.png" height="20" ></button>
+		</form>
+	</div>
 	<main class="login-form">
 		<div class="container">
 			<div class="row justify-content-center">
@@ -52,7 +54,7 @@
 											</div>
 										</div>
 										<div class="text-center-p">
-											<a class="txt1" href = "{{ url_for('auth_blueprint.forgotPassword') }}">
+											<a class="txt1" href = "{{ url_for('auth_blueprint.forgot') }}">
 												Forgot Password?
 											</a>
 											<a class="txt2" href="{{ url_for('auth_blueprint.register') }}">
