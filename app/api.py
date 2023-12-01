@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify
+from fastapi import FastAPI
 from app.db import database_connection
 
 ## chat data store in cache
@@ -18,7 +19,7 @@ from app.db import database_connection
 ##  //scraped_at
 ##  //url
 
-api_blueprint = Blueprint('api_blueprint', __name__)
+flask_api = Blueprint('flask_api', __name__)
 
 def extract_information(message):
     """
@@ -54,7 +55,7 @@ def prompt_generation_processing(features_missing):
     """
     pass
 
-def processing(message):
+def message_processing(message):
     """
     message overall processing
 
@@ -65,15 +66,13 @@ def processing(message):
         respone: system bot message output
     """
     features = extract_information(respone)
-    while validate(features) == False:
-        prompt_generation_processing()
+    while validate(features) != None:
+        respone = prompt_generation_processing(validate(features))
         features = extract_information(respone)
-
-        respone = processing
     return respone
     
             
-@api_blueprint.route('/chat_api', methods = ['GET', 'POST'])
+@flask_api.route('/chat_api', methods = ['GET', 'POST'])
 def chat():
     """
     chat api
@@ -82,5 +81,5 @@ def chat():
         respone: json(str)
     """
     message = request.json.get('message')
-    respone = processing(message)
+    respone = message_processing(message)
     return jsonify(respone)

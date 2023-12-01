@@ -25,10 +25,10 @@ def create_app(test_config=None):
     app.config.from_pyfile("config.py")
     from .auth.views.views import auth_blueprint
     from .blog.views.views import blog_blueprint
-    from .api import api_blueprint
+    from .api import flask_api
     app.register_blueprint(auth_blueprint)
     app.register_blueprint(blog_blueprint)
-    app.register_blueprint(api_blueprint)
+    app.register_blueprint(flask_api)
     cache.cache.init_app(app)
     if test_config is None:
         # load the instance config, if it exists, when not testing
