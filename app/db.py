@@ -1,5 +1,7 @@
 from pymongo import MongoClient
 import json
+import warnings
+warnings.filterwarnings("ignore")
 
 def database_connection():
     with open("app/schema.json", "r") as file:

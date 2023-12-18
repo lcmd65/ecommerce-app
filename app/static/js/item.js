@@ -1,26 +1,26 @@
-const item_product = document.querySelectorAll(".button-buy");
+const itemProduct = document.querySelectorAll(".button-buy");
 
-async function eventClickedItem(item_click) {
-    // clear item click view
-    const workspace_container = document.querySelector(".main-workspace-container-header");
-    while (workspace_container.firstChild) {
-        workspace_container.removeChild(workspace_container.firstChild);
+function eventClickedItem(itemClick) {
+    // Clear item click view
+    const workspaceContainer = document.querySelector(".main-workspace-container-header");
+    while (workspaceContainer.firstChild) {
+        workspaceContainer.removeChild(workspaceContainer.firstChild);
     }
 
-    // item click
+    // Item click
     const item = document.createElement("div");
     item.classList.add("item-view-container");
 
-    const item_name = document.createElement("p");
-    item_name.classList.add("item-view-container-line");
-    item_name.innerHTML = item_click.name;
-    item.appendChild(item_name);
+    const itemName = document.createElement("p");
+    itemName.classList.add("item-view-container-line");
+    itemName.innerHTML = itemClick.name;
+    item.appendChild(itemName);
 
-    const _id = item_click.value;
-    const item_description = document.createElement("p");
-    item_description.classList.add("item-view-container-line");
+    const _id = itemClick.value;
+    const itemDescription = document.createElement("p");
+    itemDescription.classList.add("item-view-container-line");
 
-    const request = await fetch('/description_get', {
+    const request = fetch('/description_get', {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -28,60 +28,59 @@ async function eventClickedItem(item_click) {
         body: JSON.stringify({ _id })
     });
 
-    const respone = await request.json();
-    item_description.innerHTML = JSON.parse(respone);
-    item.appendChild(item_description);
+    const response = request.json();
+    itemDescription.innerHTML = JSON.parse(response);
+    item.appendChild(itemDescription);
 
-    const button_cart = document.createElement("button");
-    button_cart.classList.add("button-card");
-    button_cart.innerHTML = "Add to cart";
-    button_cart.value = item_click.value;
-    item.appendChild(button_cart);
+    const buttonCart = document.createElement("button");
+    buttonCart.classList.add("button-card");
+    buttonCart.innerHTML = "Add to cart";
+    buttonCart.value = itemClick.value;
 
-    button_cart.addEventListener("click", async function() {
-        const request_add = await fetch('/cart_add', {
+    buttonCart.addEventListener("click", async function() {
+        const requestAdd = await fetch('/cart_add', {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({ _id })
         });
-
-        const respone_add = await request_add.text();
-        if (respone_add === "True") {
-            while (workspace_container.firstChild) {
-                workspace_container.removeChild(workspace_container.firstChild);
+        const responseAdd = await requestAdd.json();
+        if (responseAdd.success === true) {
+            while (workspaceContainer.firstChild) {
+                workspaceContainer.removeChild(workspaceContainer.firstChild);
             }
-            const textmess = document.createElement("p");
-            textmess.innerHTML = "Success";
-            workspace_container.appendChild(textmess);
-            const button_destroy = document.createElement("button");
-            button_destroy.innerHTML = "OK";
-            button_destroy.addEventListener("click", function() {
-                while (workspace_container.firstChild) {
-                    workspace_container.removeChild(workspace_container.firstChild);
+            const textMessage = document.createElement("p");
+            textMessage.innerHTML = "Success";
+            workspaceContainer.appendChild(textMessage);
+            const buttonDestroy = document.createElement("button");
+            buttonDestroy.innerHTML = "OK";
+            buttonDestroy.addEventListener("click", async function() {
+                while (workspaceContainer.firstChild) {
+                    workspaceContainer.removeChild(workspaceContainer.firstChild);
                 }
             });
-            workspace_container.appendChild(button_destroy);
+            workspaceContainer.appendChild(buttonDestroy);
         } else {
-            while (workspace_container.firstChild) {
-                workspace_container.removeChild(workspace_container.firstChild);
+            while (workspaceContainer.firstChild) {
+                workspaceContainer.removeChild(workspaceContainer.firstChild);
             }
-            const textmess = document.createElement("p");
-            textmess.innerHTML = "Fail";
-            workspace_container.appendChild(textmess);
-            const button_destroy = document.createElement("button");
-            button_destroy.innerHTML = "OK";
-            button_destroy.addEventListener("click", function() {
-                while (workspace_container.firstChild) {
-                    workspace_container.removeChild(workspace_container.firstChild);
+            const textMessage = document.createElement("p");
+            textMessage.innerHTML = "Fail";
+            workspaceContainer.appendChild(textMessage);
+            const buttonDestroy = document.createElement("button");
+            buttonDestroy.innerHTML = "OK";
+            buttonDestroy.addEventListener("click", async function() {
+                while (workspaceContainer.firstChild) {
+                    workspaceContainer.removeChild(workspaceContainer.firstChild);
                 }
             });
-            workspace_container.appendChild(button_destroy);
+            workspaceContainer.appendChild(buttonDestroy);
         }
     });
+    item.appendChild(buttonCart);
 }
 
-item_product.forEach(element => {
+itemProduct.forEach(element => {
     element.addEventListener("click", () => eventClickedItem(element));
 });

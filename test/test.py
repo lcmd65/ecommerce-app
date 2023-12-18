@@ -1,36 +1,74 @@
-from pymongo import MongoClient
-import json
-from bson import ObjectId  # Import ObjectId from bson
-from app.cache import cache
+from guppy import hpy
 
-class Product:
-    def __init__(self):
-        # Load the MongoDB connection details from the schema.json file
-        with open("app/schema.json", "r") as file:
-            config = json.load(file)
+<<<<<<< HEAD
+h = hpy()
+print(h.heap())
+=======
+## chat data store in cache
+## chat: = {id: str, chat: []}
+## user: {id:str, username:str, password: str, email:str, gender: M/F}
+## features:
+##  //_id
+##  //name
+##  //description
+##  //availability
+##  //brand
+##  //color
+##  //currency
+##  //price
+##  //avg_rating
+##  //review_count
+##  //scraped_at
 
-        # Connect to MongoDB
-        client = MongoClient(config["mongo_uri"])
-        database = client["Datathon"]
-        self.collection = database["Product"]
-        self.documents = list(self.collection.find())  # Convert the cursor to a list
-        client.close()
 
-    def to_dict(self):
-        # Convert ObjectId to string before returning the dictionary
-        return [{**item, "_id": str(item["_id"])} for item in self.documents]
+def prompt_generation_processing(features_missing):
+    """
+    if the validate return features_missing, in that features_missing != None, generate prompt for continues extraction
+    
+    Args:
+        fetures_missing (list): list[feature_name]
+    returns:
+        prompt questtion (str): bot question
+    """
+    openai.api_key = api_getting()
+    product_recommend = None
+    missing_text = ", ".join(features_missing)
 
-    def set_cache(self):
-        # Use JSON.dumps to serialize the list of documents to a JSON string
-        product_json = json.dumps(self.to_dict())
+    if features_missing != []:
+        completion = openai.ChatCompletion.create(
+            model="gpt-4-1106-preview",
+            messages=[
+                {"role": "user", "content": f"generate ask question for user about: {missing_text}"},
+                {"role": "user", "content": f"recommend this product: {str(product_recommend)}"}
+            ]
+        )
+        respone = completion.choices[0].message.content
+        return respone
+    else:
+        completion = openai.ChatCompletion.create(
+                model="gpt-4-1106-preview",
+                messages=[
+                    {"role": "system", "content": "".join(["generate ask quesion for user about: ", missing_text]) }
+                ]
+            )
+        respone = completion.choices[0].message.content
+        return jsonify(respone)
+    
 
-        # Set the JSON string to the cache
-        cache.set('Product', product_json)
-
-    def display(self):
-        for item in self.to_dict():
-            print(item)
-
-if __name__ == "__main__":
-    product = Product()
-    product.display()
+def api_getting():
+    with open("app/schema.json", "r") as file:
+        uri = json.load(file)
+    client = MongoClient(uri["mongo_uri"])
+    client.admin.command('ping')
+    db = client["Api"]
+    collection = db["api"]
+    documents = collection.find()
+    api_key = None
+    for item in documents:
+        if item['api'] == 'datathon-service':
+            api_key = item['api-key']
+            break
+    return api_key
+if __name__ =="__main__":
+   print(prompt_generation_processing(["clothing"]))
+>>>>>>> 77412cbd1e225cde396b5647935cc202b5f9ee74

@@ -19,25 +19,35 @@
         <script src="https://cdn.jsdelivr.net/npm/highlight.js@10.7.2/lib/languages/python.min.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/a11y-dark.min.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>   
+        <script>
+        </script> 
     </head>
     <body>
         <p class ="dear-text" >Hello {{user_name}} </p>
+        <div class = "container-item-entry-search">
+            <input class = "item-entry-search" type = "entry" placeholder = "Search">
+            <button class = "item-button-search-btn" name ="button-search">
+                <i class="fas fa-search"></i>
+            </button>
+        </div> 
         <div class = "user-header">
             <div class = 'container'>
                 <nav class="navbar-user-information">
                     <ul class="navbar-user-information-list">
                         <li>
-                        <a href="/">Log out</a>
-                         </li>
-                        <li>
-                        <a href="#user_information">User information</a>
+                            <a href="/">Log out</a>
                         </li>
                         <li>
-                        <a href ="#cart" onclick="eventClickedCart()"><i class="fa fa-shopping-cart" style="font-size:20px" id="card-icon"></i></a>
+                            <a href="/user_information">User information</a>
                         </li>
                         <li>
-                        <a href="#help">Help</a>
+                            <button class ="cart-button-click" id ="cart-link">
+                                <i class ="fa fa-shopping-cart" style="font-size:15px"></i>
+                            </button>
+                        </li>
+                        <li>
+                            <a href="#help">Help</a>
                         </li>
                     </ul>
                     </div>
@@ -50,96 +60,102 @@
                     <div class="collapse navbar-collapse" id="mainMenu">
                     <ul class="navbar-nav ml-auto text-uppercase f1">
                         <li>
-                            <img src="static/images/logo.png" alt="Description of the image" height="35" >
+                            <img src="static/images/logo.png" height="35" >
                         </li>
                         <li>
-                        <a href="#home" class="active active-first">Home</a>
+                        <a href="/home" class="active active-first">Home</a>
                         </li>
                         <li>
-                        <a href="/men">Men</a>
+                        <a href="#men">Men</a>
                         </li>
                         <li>
-                        <a href="/women">Women ☕</a>
+                        <a href="#women">Women</a>
                         </li>
                         <li>
-                            <a href="/kid">Babies & Kids</a>
-                        </li>
-                        <li> 
-                            <a><input class = "entry-search" type = "entry">  Search </a> 
+                            <a href="#kid">Kids</a>
                         </li>
                     </ul>
                     </div>
                 </nav>
             </div>
         </header>
-        <img class = "img-background" src="static/images/bg.png">
+        <!-- <img class = "img-background" src="static/images/bg.png"> -->
         <div class = "body-space">
             <div class = "tree-workspace-container">
-                <ul class="tree-node">
-                    <li>
-                        <label><p> Brand of Product</p></label>
-                        <ul>
-                            <li><label><input type="checkbox"> Nike </label></li>
-                            <li><label><input type="checkbox"> Adidas</label></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <label><p>Price</p></label>
-                        <ul>
-                            <li><label><input type="checkbox"> 0 - 200 USD</label></li>
-                            <li><label><input type="checkbox"> 200 - 500 USD</label></li>
-                            <li><label><input type="checkbox"> 500 - 1000 USD</label></li>
-                            <li><label><input type="checkbox"> 1000+ USD</label></li>
-                        </ul>
-                    </li>
-                
-                    <li>
-                        <label><p> Availability</p></label>
-                        <ul>
-                            <li><label><input type="checkbox"> In Stock</label></li>
-                            <!-- Add more options if needed -->
-                        </ul>
-                    </li>
-                </ul>
+                <form id="filterForm" action="/home" method="post">
+                    <ul class="tree-node">
+                        <li>
+                            <label><p>Brand of Product</p></label>
+                            <ul>
+                                <li><label><input type="checkbox" name="brand" value="nike"> Nike </label></li>
+                                <li><label><input type="checkbox" name="brand" value="adidas"> Adidas</label></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <label><p>Price</p></label>
+                            <ul>
+                                <li><label><input type="checkbox" name="price" value="50"> 0 - 50 USD</label></li>
+                                <li><label><input type="checkbox" name="price" value="50"> 50 - 100 USD</label></li>
+                                <li><label><input type="checkbox" name="price" value="150"> 100 - 150 USD</label></li>
+                                <li><label><input type="checkbox" name="price" value="200"> 200+ USD</label></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <label><p></p></label>
+                            <ul>
+                                <li><label><input type="checkbox" name="availability" value="shoe"> Shoe</label></li>
+                                <li><label><input type="checkbox" name="availability" value="shirt"> Shoe</label></li>
+                                <li><label><input type="checkbox" name="availability" value="bag"> Shoe</label></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <label><p>Availability</p></label>
+                            <ul>
+                                <li><label><input type="checkbox" name="availability" value="in-stock"> In Stock</label></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <button class="button-click-filtering" type="button" onclick="filterProducts()">Filter</button>
+                </form>
             </div>
-            <form class = "main-workspace-container">
+            <div class = "main-workspace-container">
                 <div class = "main-workspace-container-header">
                 </div>
                 <div class = "main-workspace-container-body">
                 </div>
-            </form>
+            </div>
         </div>
 
         <div class = "chat-box-container">
             <div class = "chat-button-bar">
                 <p class = "bot-label">SUSbot</p>
-                <button class ="chat-button-openbutton" onclick="changeHeightOpen()">
+                <button class ="chat-button-fullscreen" onclick = "changeHeightFullScreen()">
+                    <>
+                </button>
+                <button class ="chat-button-openbutton" onclick = "changeHeightOpen()">
                     +
                 </button>
-                <button class ="chat-button-closebutton" onclick="changeHeightClose()">
+                <button class ="chat-button-closebutton" onclick = "changeHeightClose()">
                     -
                 </button>
             </div>
             <div class ="chat-box mt-3">
 
             </div>
-                <form action = "/ecommerce", method = POST>
+                <form action = "/home", method = POST>
                     <textarea class ="chat-entry" rows="1" placeholder="Chat" id="message-input" name ="chat"></textarea>
-                </from>
-            <button type="button" class="btn" id="send-btn"></button>
+                </form>
+            <button type="submit" class="btn" id="send-btn"></button>
         </div>
         <div class = "policy">
             <div class = "fixed-box">
-                <p class = "label-policy"> Policy @ 2023
+                <p class = "label-policy"> Privacy @ 2023
                 </p>
             </div>
         </div>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
         <script src= "static/js/home.js"></script>
-        <script src= "static/js/chatbot.js" defer></script>
-        <script src= "static/js/item.js" defer></script>
-        <script src= "static/js/cart.js" defer></script>
+        <script src= "static/js/cart.js" ></script>
+        <script src= "static/js/search_bar.js"></script>
+        <script src= "static/js/chatbot.js"></script>
     </body>
 </html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <link rel="stylesheet" type="text/css" href = "{{ url_for('static',filename='css/intro.css') }}"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    </head>
+    <body>
+        <header>
+            <div class ="container-view">
+                <img class = "img-bg" src="{{ url_for('static',filename='images/bot.gif') }}" alt = "sUSsesful bot">
+                <p class = "title">SUSbot</p>
+                <div class = "intro-text" id="introText">
+                    <p>Meet SUSbot, your ultimate shopping companion in the digital marketplace. SUSbot stands as a beacon of innovation in the e-commerce sphere, offering a seamless and personalized shopping experience. In a world where online interactions shape our consumer journeys, SUSbot takes the lead, combining cutting-edge technology with user-centric design to redefine how we discover and acquire products. </p>
+                    <p>Get ready to explore the future of shopping with SUSbot, your trusted ally in the world of e-commerce. </p>
+                </div>
+            </div>
+            <div class="container-view">
+                <p class="intro-text">
+                    Discover the latest trends and elevate your style with our cutting-edge fashion platform.
+                    We bring you a curated collection of high-quality apparel, designed to inspire confidence
+                    and express your unique personality.
+                </p>
+                <p class = "title">
+                    <strong>Why Choose Our Fashion App?</strong>
+                </p>
+                <ul>
+                    <li>Trendsetting Styles</li>
+                    <li>Unmatched Quality</li>
+                    <li>Seamless Shopping Experience</li>
+                    <li>Personalized Recommendations</li>
+                    <li>Exclusive Deals</li>
+                </ul>
+                <p class="intro-text">
+                    Explore the world of fashion with Your Fashion App. Your style journey begins here!
+                </p>
+            </div>
+            <form action = "/intro" method = post>
+                <button class="button-link-app" type = "submit">
+                    <img src="{{ url_for('static',filename='images/go.png') }}">
+                </button>
+            </form>
+        </header>
+        <div class ="team-information">
+            <p> VNU - HCM, University of Science. </p>
+            <p> Ho Chi Minh City, Viet Nam.</p>
+            <p> Team member: Thang, Tram, Thoang, Vy, Dat </p>
+            <p> Privacy - Copy right @2023 </p>
+        <div>
+        <script defer src=""> </script>
+    </body>
+</html>

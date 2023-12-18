@@ -7,7 +7,10 @@ from flask import (\
     redirect,
     url_for,
     current_app,
+    session,
     g)
+
+import app.cache
 
 auth_blueprint = Blueprint('auth_blueprint', __name__)
 
@@ -25,18 +28,27 @@ def ecommerce():
     Base window of ecommerce app
 
     Returns:
-        base.html
+        index.html
     """
-    try:
-        if request.method == "POST":
-            button_name = request.form.get("button")
-            if button_name == "login": return redirect('/login')
-            elif button_name == "register": return redirect('/register')
-            return render_template("base.html")
-        return render_template("base.html")
-    except Exception as e: 
-        print("error",e)
-    return render_template("base.html")
+    user_features ={
+            'clothing': None,
+            'brand': None,
+            'style':None,
+            'material': None,
+            'activity': None,
+            'feature': None,
+            'age': None
+        }
+    filtering = []
+    if request.method == "POST":
+        session["user_features"] = user_features
+        session["filter"] = filtering
+        button_name = request.form.get("button")
+        if button_name == "login": return redirect('/login')
+        elif button_name == "register": return redirect('/register')
+        return render_template("index.html")
+    session["user_features"] = user_features
+    return render_template("index.html")
         
 
 
@@ -44,7 +56,6 @@ def ecommerce():
 def login():
     """
     Login route render template
-    
     Returns:
        login.html
     """
@@ -62,6 +73,8 @@ def login():
                     return redirect("/home")
                 else: 
                     return render_template("auth/login.html", error="Invalid username or password.")
+        elif request.method == "GET":
+            return render_template('auth/login.html', error = error)
     except Exception as e:
         print('error oocur when login: ', e)
     return render_template('auth/login.html', error = error)
@@ -113,11 +126,12 @@ def register():
                 username = request.values['user'] 
                 password = request.values['pass']
                 confirm_password = request.values['confirm_password']
-                email = request.values['email'] 
+                email = request.values['email']
                 user_id = request.values['id']
                 gender = request.values['gender']
+                role = "0"
                 if confirm_password == password:
-                    boolean = register_user(username, email, password, user_id , gender)
+                    boolean = register_user(username, email, password, user_id , gender, role)
                     if boolean == True:
                         return render_template("auth/register.html", error = "Success")
                     else:   

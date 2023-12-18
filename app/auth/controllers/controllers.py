@@ -1,6 +1,5 @@
-import app.cache
 from app.db import database_connection
-import json
+from flask import session
 
 def authentication(username, password):
     """
@@ -27,9 +26,21 @@ def authentication(username, password):
         cart_collection = database["User_Cart"]
         cart = cart_collection.find_one({"id": (user.__dict__())["id"]})
         cart["_id"] = str(cart["_id"])
-        app.cache.cache.set('user' ,json.dumps(user.__dict__()))
-        app.cache.cache.set('cart', json.dumps(cart))
-        print(json.dumps(cart))
+        item_cache = {}
+        session["user"] = user.__dict__()
+        session["cart"] = cart
+        session["item"] = item_cache
+        if session.get("user_features") == None:
+            user_features ={
+                'clothing': None,
+                'brand': None,
+                'style':None,
+                'material': None,
+                'activity': None,
+                'feature': None,
+                'age': None 
+            }
+            session["user_features"] = user_features
         client.close()
         return True
     else:
@@ -67,7 +78,7 @@ def confirm_authentication(username, email, newpass, confirm_newpass):
             client.close()
             return False  # User not found
 
-def register_user(username, email, password, user_id , gender):
+def register_user(username, email, password, user_id , gender, role):
     """
     register new user
 
@@ -84,6 +95,8 @@ def register_user(username, email, password, user_id , gender):
     client, database = database_connection()
     collection = database["User"]
     cart_collection = database["User_Cart"] 
+    image_collection = database["User_Image"]
+    contact_colleciton = database["User_Contact"]
     
     # Check if the username or email is already registered
     existing_user = collection.find_one({'$or': [{'username': username}, {'email': email}, {'id': user_id}]})
@@ -99,7 +112,8 @@ def register_user(username, email, password, user_id , gender):
             'password': password,
             'email': email,
             'gender': gender,
-            'id': user_id
+            'id': user_id,
+            'role': role
         }
         
         new_cart = {
@@ -107,8 +121,22 @@ def register_user(username, email, password, user_id , gender):
             'cart': []
         }
         
+        new_image = {
+            'id': user_id,
+            'image' : ""
+        }
+        
+        new_contact = {
+            'id': user_id,
+            'phone': None,
+            'address': None,
+        }
+        
         collection.insert_one(new_user)
         cart_collection.insert_one(new_cart)
+        image_collection.insert_one(new_image)
+        contact_colleciton.insert_one(new_contact)
         client.close()
-        return True  # Registration successful
+        return True  
+    # Registration successful
     

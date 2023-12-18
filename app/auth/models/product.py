@@ -9,7 +9,8 @@ class Product:
         # Load the MongoDB connection details from the schema.json file
         client, database = database_connection()
         collection = database["Product"]
-        self.documents = list(collection.find())  # Convert the cursor to a list
+        documents = list(collection.find())
+        self.documents = documents[0:50]
         client.close()
 
     def to_dict(self):

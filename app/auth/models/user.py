@@ -7,6 +7,7 @@ class User():
         self.password = user_information['password']
         self.gender = user_information['gender']
         self.email = user_information['email']
+        self.role = user_information['role']
         self.image = None
         self.chat_message = []
         
@@ -17,6 +18,7 @@ class User():
             "password": self.password,
             "email": self.email,
             "gender":self.gender,
+            "role":self.role
         }
         
     def user_parsing(self, username):

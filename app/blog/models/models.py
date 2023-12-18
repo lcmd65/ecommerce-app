@@ -11,9 +11,7 @@ class UserChat:
                 "id": self.id,
                 "chat": self.chat
             }          
-        
-        
-        
+             
 class UserCart:
     def __init__(self):
         client, database = database_connection()
@@ -21,11 +19,11 @@ class UserCart:
         collection = database['User_Cart']
         cart = collection.find()
         self.id = cart["id"]
-        self.list_item = cart["item"]
+        self.item = cart["item"]
         client.close()
     
     def to_dict(self):
         return{
             "id": self.id,
-            "item": self.list_item
+            "item": self.item
         }
