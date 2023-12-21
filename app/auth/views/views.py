@@ -46,9 +46,9 @@ def ecommerce():
         button_name = request.form.get("button")
         if button_name == "login": return redirect('/login')
         elif button_name == "register": return redirect('/register')
-        return render_template("index.html")
+        return render_template("base.html")
     session["user_features"] = user_features
-    return render_template("index.html")
+    return render_template("base.html")
         
 
 
