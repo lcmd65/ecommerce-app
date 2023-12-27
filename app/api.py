@@ -188,7 +188,7 @@ def processing_search_message(message):
     search bar
 
     Args:
-        message (Str)):message input
+        message (str):message input
 
     Returns:
         product []: render filtering
