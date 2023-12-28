@@ -36,6 +36,7 @@ curl -fsSL https://get.docker.com | sh
 ## UI/UX
     
 <img width="800" alt="UI/UX" src="app/static/images/ui-demo.png">
+<img width="800" alt="Screenshot 2023-12-28 at 18 35 28" src="https://github.com/lcmd65/ecommerce-app/assets/93373784/f02cd9d1-f533-4890-8268-a298b3eef3b9">
 
 ## Summary (Beginning of pitching)
 
