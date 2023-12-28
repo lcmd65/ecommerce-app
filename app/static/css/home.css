@@ -196,17 +196,22 @@ body {
     position: fixed;
     font-size: 14px;
     align-items: flex-end;
-    margin-top: 0px;
+    margin-top: 20px;
     margin-left: 60%;
     margin-right: 10%;
     text-align: right;
+    visibility: inherit;
 }
 
 .navbar-user-information-list {
     justify-content: flex-end;
     display: flex;
     margin-right: 0%;
+    max-height: 100vh;
     text-align: right;
+    text-transform: capitalize;
+    text-overflow: clip;
+    font-size: 16px;
 }
 
 .navbar-user-information-list li {
@@ -221,21 +226,21 @@ body {
 
 .container-item-entry-search {
     z-index: 1000;
-    position: relative;
+    position: absolute;
     border-radius: 12px;
-    padding-right: 5px;
+    padding-left: 0px;
     height: 40px;
-    width: 20%;
+    width: 40%;
     font-size: 12px;
     margin-left: 30%;
-    margin-top: 5px;
+    margin-top: 20px;
     /* display: flex;
     flex-direction: row; */
     box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 5px;
 }
 
 .item-entry-search {
-    padding: 10px;
+    padding-left: 10px;
     position: absolute;
     border: #ccc;
     border-radius: 8px;
@@ -493,7 +498,7 @@ ol {
 }
 
 .tree-workspace-container {
-    background-color: #eae9ef;
+    background-color: #e9eaef;
     height: 100%;
     width: 20%;
     position: fixed;
@@ -504,17 +509,22 @@ ol {
     height: 1000vh;
     width: 50%;
     position: absolute;
-    margin-left: 30%;
+    margin-left: 25%;
     z-index: 10;
 }
 
 .main-workspace-container-body {
     margin-top: 50px;
-    margin-left: 10px;
+    margin-left: 0px;
     height: 100%;
-    width: 138%;
+    max-height: 100vh;
+    width: 148%;
     position: absolute;
-    display: inline-grid;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Three columns with equal width */
+    gap: 10px;
+    /* Adjust the gap between columns */
     justify-content: flex-start;
     overflow-y: auto;
     z-index: 20;
@@ -522,7 +532,7 @@ ol {
 
 .product-card {
     width: 300px;
-    height: 400px;
+    height: 500px;
     min-width: 300px;
     position: relative;
     display: flow-root;
@@ -535,9 +545,9 @@ ol {
 }
 
 .product-image {
-    width: 300px;
-    height: 200px;
-    min-width: 300px;
+    width: 240px;
+    height: 300px;
+    min-width: 200px;
     position: relative;
     display: flow-root;
     justify-content: flex-start;
