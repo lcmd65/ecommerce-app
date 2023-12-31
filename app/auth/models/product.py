@@ -3,6 +3,7 @@ import json
 from bson import ObjectId  # Import ObjectId from bson
 from app.cache import cache
 from app.db import database_connection
+from math import isnan
 
 class Product:
     def __init__(self):
@@ -15,9 +16,31 @@ class Product:
 
     def to_dict(self):
         # Convert ObjectId to string before returning the dictionary
-        list_data = []
+        processed_data = []
+
         for item in self.documents:
-            list_data.append({"_id": str(item["_id"]), "name": str(item["name"]), "price": item["price"], "currency": item["currency"], "brand": item["brand"]})
+            processed_item = {}
+            for key, value in item.items():
+                if key == 'images':
+                        # Attempt to convert the value to a float
+                        processed_item[key] = "" if str(value) == None else value
+                else:
+                    processed_item[key] = value
+
+            processed_data.append(processed_item)
+            
+        list_data = [
+            {
+                "_id": str(item["_id"]),
+                "name": item["name"],
+                "price": item["price"],
+                "currency": item["currency"],
+                "brand": item["brand"],
+                "images": item["images"]
+            }
+            for item in processed_data
+        ]
+       
         return list_data
 
     def set_cache(self):

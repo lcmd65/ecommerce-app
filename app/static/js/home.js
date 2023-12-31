@@ -22,12 +22,18 @@ async function messageBoxClient(message) {
     });
 }
 
-function renderProductCardHome(product) {
+async function renderProductCardHome(product) {
     const productCard = document.createElement("div");
     productCard.classList.add("product-card");
 
     const productImage = document.createElement("div");
     productImage.classList.add("product-image");
+    if (typeof product.images === 'string' && product.images.trim() !== "") {
+        var imgg = document.createElement("img");
+        const path_img = product.images;
+        imgg.src = path_img;
+        productImage.appendChild(imgg);
+    }
     //addimage(product.image, productImage);
     productCard.appendChild(productImage);
 

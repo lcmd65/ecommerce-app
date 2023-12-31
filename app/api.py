@@ -315,10 +315,10 @@ def product_get():
                 "price": item["price"],
                 "currency": item["currency"],
                 "brand": item["brand"],
+                "images": item["images"] if item["images"] is not None else ''
             }
-            for item in result
+            for item in result 
         ]
-
         # Close the database connection
         client.close()
         return list_data

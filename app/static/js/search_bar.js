@@ -7,6 +7,7 @@ function renderProductCard(product) {
 
     const productImage = document.createElement("div");
     productImage.classList.add("product-image");
+
     //addimage(product.image, productImage);
     productCard.appendChild(productImage);
 
