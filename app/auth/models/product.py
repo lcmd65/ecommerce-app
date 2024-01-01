@@ -3,7 +3,7 @@ import json
 from bson import ObjectId  # Import ObjectId from bson
 from app.cache import cache
 from app.db import database_connection
-from math import isnan
+
 
 class Product:
     def __init__(self):
@@ -23,7 +23,7 @@ class Product:
             for key, value in item.items():
                 if key == 'images':
                         # Attempt to convert the value to a float
-                        processed_item[key] = "" if str(value) == None else value
+                        processed_item[key] = "" if (str(value) == "nan" or str(value) == None) else value
                 else:
                     processed_item[key] = value
 
