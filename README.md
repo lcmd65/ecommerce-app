@@ -3,29 +3,8 @@
 ## Debug on local (very risk)
 Simply type below command and Ctrl+C when you want to shut down it.
 
-```bash
-make run
-```
-
-## Debug on Docker Container (recommended)
-Note that this will cost 1.41GB of your disk drive for only container size, and also mount your "./" path to container.
-
-```bash
-docker compose -f ./docker-compose.yaml up --detach
-```
-
 ## Requirements
-  
 - Python 3.10.12 with packages in **requirements.txt**:
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r ./requirements.txt
-```
-- Docker, Docker Compose (Latest Version)
-```bash
-curl -fsSL https://get.docker.com | sh
-```
 
 ## Account
 
