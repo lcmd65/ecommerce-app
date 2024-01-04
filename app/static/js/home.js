@@ -30,7 +30,8 @@ async function renderProductCardHome(product) {
     productImage.classList.add("product-image");
     if (typeof product.images === 'string' && product.images.trim() !== "") {
         var imgg = document.createElement("img");
-        const path_img = product.images;
+        const path_img = product.images.trim();
+        console.log(path_img);
         imgg.src = path_img;
         productImage.appendChild(imgg);
     }
