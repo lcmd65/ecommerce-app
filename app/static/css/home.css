@@ -1010,15 +1010,30 @@ ol {
 }
 
 .button-click-filtering {
-    position: fixed;
+    position: absolute;
     margin-bottom: 10%;
-    margin-top: 70%;
+    margin-right: 20px;
     margin-left: 20px;
-    width: 5%;
-    height: 30px;
-    background-color: #ffffff;
+    width: 80%;
+    height: 25px;
+    background-color: #1bffac;
     border-radius: 8px;
     font-size: 12px;
     border: 0px;
     box-shadow: none;
+}
+
+.button-click-filtering ::placeholder {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.button-click-filtering ::after {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.button-click-filtering ::selection {
+    background-color: #ffffff;
+    color: #000000;
 }
