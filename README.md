@@ -1,4 +1,6 @@
-# Ecommerce - Web Application
+## Ecommerce - Web Application
+
+Welcome to our Ecommerce web application. This platform offers a seamless shopping experience enhanced by SUSBot, a personal shopping assistant that provides tailored suggestions for your favorite products.
 
 ## Debug on local (very risk)
 Simply type below command and Ctrl+C when you want to shut down it.
@@ -17,10 +19,24 @@ Simply type below command and Ctrl+C when you want to shut down it.
 <img width="800" alt="UI/UX" src="app/static/images/ui-demo.png">
 <img width="800" alt="Screenshot 2023-12-28 at 18 35 28" src="https://github.com/lcmd65/ecommerce-app/assets/93373784/f02cd9d1-f533-4890-8268-a298b3eef3b9">
 
-## Summary (Beginning of pitching)
+## Summary (Introduction to SUSBot)
 
-Imagine scrolling online for the perfect shoes, but it's overwhelming. That's where SUSBot comes in – your personal shopping helper. SUSBot is like a smart friend who gets what you want. Chat with it, share your style, and get tailored suggestions for Adidas or Nike shoes instantly, like having a shopping expert 24/7.
+Imagine scrolling online for the perfect shoes, but it's overwhelming. That's where SUSBot comes in – your personal shopping helper. SUSBot is like a smart friend who understands your preferences. Chat with it, share your style, and receive tailored suggestions for Adidas or Nike shoes instantly, like having a shopping expert available 24/7.
 
-Why SUSBot for online shopping? It's about making things easy. No more endless scrolling. SUSBot simplifies it all – ask about sizes or styles, and get quick, accurate info. It's like chatting with a friend. SUSBot makes shopping faster and more fun.
+### Why Choose SUSBot for Online Shopping?
+SUSBot simplifies your shopping experience:
 
-This clever chatbot makes shopping personal and interactive.How? Well, SUSBot's secret weapon is its cutting-edge NLP model, and LLM for answer generation (thanks to OpenAI). This tech wizardry helps SUSBot understand your needs better than ever. It's the key to finding your perfect buy hassle-free. SUSBot makes shopping feel like a friendly chat, guiding you to the best choice effortlessly.
+- Effortless Browsing: No more endless scrolling. SUSBot curates suggestions based on your preferences.
+- Instant Assistance: Ask about sizes, styles, or any product-related queries and get quick, accurate responses.
+- Personalized Experience: SUSBot makes shopping faster and more enjoyable by understanding your unique needs.
+- SUSBot leverages advanced NLP (Natural Language Processing) models and LLM (Large Language Models) for answer generation, powered by OpenAI. This cutting-edge technology ensures SUSBot comprehends your requirements and guides you to the perfect purchase effortlessly.
+
+Enjoy a shopping experience that feels like chatting with a knowledgeable friend, guiding you to the best choices effortlessly.
+
+## License
+
+MIT
+
+## Contributor
+
+[Le Chon Minh Dat](https://github.com/lcmd65)
